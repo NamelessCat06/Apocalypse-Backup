@@ -1,0 +1,89 @@
+﻿title: TalkGirls
+tags: girls
+---
+You: Are you two doing okay?
+Girl 1: It's fine... just a big shock, that's all.
+    -> Talk to the other girl
+        You: Did you get hurt?
+        The sobbing girl shakes her head.
+        Girl 2: I-It is j-j-just a small cut from the glass. Nothing b-bad...
+        You: Ah...
+            -> "Why are you crying then?"
+                <<jump WhyCrying>>
+            -> "It's not safe to stay here"
+                <<jump NotSafeToStay>>
+    -> "Are you sure?"
+        Girl 1: Yes, we're sure?! What do you want?
+            -> "Nothing"
+                <<jump Nothing>>
+            -> "I just want to help you"
+                <<jump HelpYou>>
+    -> "I'll leave you to it"
+===
+
+title: WhyCrying
+tags: girls
+---
+You: Why are you crying then?
+The crying girl looks up at you, confused. Her eyes are red.
+The other girl stares at you dumbfounded.
+Girl 1: ... because a bomb just exploded?!? In what world is that not a good reason to cry?!
+Girl 1: We might not be able to see our family ever again!
+    -> "It's not safe to stay here"
+        <<jump NotSafeToStay>>
+    -> "Oh... I'm sorry..."
+        <<jump ImSorry>>
+===
+
+title: ImSorry
+tags: girls
+---
+You: Oh I'm sorry, I didn't mean for it to come out that way...
+Girl 1: What do you want from us
+    -> "Nothing"
+        <<jump Nothing>>
+    -> "I just want to help you"
+        <<jump HelpYou>>
+===
+
+title: Nothing
+tags: girls
+---
+You: Nothing!
+Girl 1: Just leave us alone then.
+===
+
+title: HelpYou
+tags: girls
+---
+You: I just want to help you!
+Girl 1: How?
+    -> "It's not safe to stay here"
+        <<jump NotSafeToStay>>
+===
+
+title: NotSafeToStay
+tags: girls
+---
+You: It's not safe to stay here
+Girl 1: Where else are we supposed to go then?
+    -> "Seek help"
+        You: You should probably seek help. Some people outside must know what to do.
+        Girl 1: Why would we listen to you? You've not exactly been kind to us.
+        You: I and no one in this place will be able to help you survive.
+        You: If you want to see your family again, you should probably find someone who can. Or do you not want to see them again?
+        Girl 1: ...
+        Girl 1:... We'll go find help then.... Come on Jen.
+    -> "Go to the basement"
+        You: It's safer in the basement. The walls should keep out most of the dangerous radiation.
+        Girl 1: Why would we listen to you? You've not exactly been kind to us.
+        You: If you stay here you will surely die of radiation poisoning! In the basement you might have a bit more chance of survival.
+        You: You might be able to see your family again once this is all over. Or do you not want to see them?
+        Girl 1: ...
+        Girl 1: We'll go to the basement then... Come on Jen.
+===
+
+title: GrabFood
+---
+You grabbed some food and water
+===
