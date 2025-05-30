@@ -35920,7 +35920,7 @@ MonoBehaviour:
   shouldActivateOnCollision: 0
   canBeActivated: 1
   dialogueRunner: {fileID: 1456968094}
-  dialogueNodeName: 
+  dialogueNodeName: TalkBoy
 --- !u!1 &869445274
 GameObject:
   m_ObjectHideFlags: 0
