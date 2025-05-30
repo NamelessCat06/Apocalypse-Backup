@@ -1,0 +1,28 @@
+﻿title: TalkBoy
+tags: boy
+---
+You: Are you okay?
+The boy doesn't respond
+    -> Snap out of it
+        You: HEY, SNAP OUT OF It
+        Boy: WHAT IS WRONG WITH YOU?!?
+    -> Help him
+        You sit down next to the boy. He keeps hyperventilating and staring at the floor. There are tears in his eyes.
+        You: It is important for you to breathe, I can help you with that.
+        You: Just do as I do
+        You: Inhale... 2... 3... 4...
+        You: Hold... 2... 3... 4... 5... 6... 7...
+        You: Exhale... 2... 3... 4... 5... 6... 7... 8...
+        The boy joins in.
+        You keep counting and breathing until you notice the boy has calmed down.
+        You: Is that better?
+        The boy nods slightly
+            -> "You should find some help"
+                You: You should probably seek help. Some people outside must know what to do.
+                The boy gives a nod
+                Boy: <i>Thank you...</i>
+            -> Send him to the basement
+                You: It's safer in the basement. The walls should keep out most of the dangerous radiation.
+                The boy gives a nod
+                Boy: <i>Thank you...</i>
+===
