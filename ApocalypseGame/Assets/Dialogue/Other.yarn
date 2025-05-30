@@ -9,3 +9,15 @@
 <i>He was just here</i>
 <i>I need to find him and get to safety!</i>
 ===
+
+title: WindowJumpLow
+---
+<i>I probably shouldn't jump through this...</i>
+<i>The glass could cut me...</i>
+===
+
+title: WindowJumpHigh
+---
+<i>I probably shouldn't jump through this...</i>
+<i>Won't get far with broken legs</i>
+===
