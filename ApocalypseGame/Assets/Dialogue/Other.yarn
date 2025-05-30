@@ -1,5 +1,6 @@
 ﻿title: Start
 ---
+<<declare $windowJump = 0>>
 <i>Ow... My head...</i>
 <i>...</i>
 <i>... Did a bomb just explode?</i>
@@ -12,8 +13,25 @@
 
 title: WindowJumpLow
 ---
-<i>I probably shouldn't jump through this...</i>
-<i>The glass could cut me...</i>
+<<if $windowJump < 4>>
+    <i>I probably shouldn't jump through this...</i>
+    <i>The glass could cut me...</i>
+    <<set $windowJump to $windowJump+1>>
+<<elseif $windowJump == 4>>
+    <b>Do you really want to jump through a window that badly?</b>
+        -> Yes
+            <b>Fine, have it your way</b>
+            <<set_enabled_in_unity "DownBorders" false>>
+            <<set_enabled_in_unity "DownTriggers" True>>
+        -> No
+            <b>Then stop jumping AGAINST THE WINDOW</b>
+<<endif>>
+===
+
+title: WindowCut
+---
+OW-
+You cut yourself on the glass
 ===
 
 title: WindowJumpHigh
