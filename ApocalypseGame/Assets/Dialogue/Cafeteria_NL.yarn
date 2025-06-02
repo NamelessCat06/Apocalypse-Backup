@@ -1,0 +1,90 @@
+﻿title: TalkGirlsNL
+tags: girls
+---
+Jij: Gaat het wel goed met jullie?
+Meisje 1: Het is prima... gewoon een grote schok, dat is het.
+    -> Praat met het andere meisje
+        Jij: Ben je gewond?
+        Het huilende meisje schud haar hoofd
+        Meisje 2: H-het is gewoon een kleine snee van het glas. N-niets ergs...
+        Jij: Ah...
+            -> "Waarom huil je dan?"
+                <<jump WhyCrying>>
+            -> "Het is niet veilig om hier te blijven"
+                <<jump NotSafeToStay>>
+    -> "Weet je het zeker?"
+        Meisje 1: Ja we weten het zeker?! Wat moet je?
+            -> "Niets"
+                <<jump Nothing>>
+            -> "Ik wil gewoon helpen!"
+                <<jump HelpYou>>
+    -> Laat ze met rust
+===
+
+title: WhyCryingNL
+tags: girls
+---
+Jij: Waarom huil je dan?
+Het huilende meisje kijkt je verward aan. Haar ogen zijn rood.
+Het ander meisje staart je verbijsterd aan.
+Meisje 1: ... omdat er net een bom is ontploft?!? Hoe is dat geen goede reden om te huilen?!
+Meisje 1: Misschien zien we onze familie wel nooit meer terug!
+    -> "Het is niet veilig om hier te blijven"
+        <<jump NotSafeToStay>>
+    -> "Oh... sorry..."
+        <<jump ImSorry>>
+===
+
+title: ImSorryNL
+tags: girls
+---
+Jij: Oh- s-sorry, ik bedoelde het niet zo...
+Meisje 1: Ughh, wat wil je van ons?!
+    -> "Niets"
+        <<jump Nothing>>
+    -> "Ik wil gewoon helpen!"
+        <<jump HelpYou>>
+===
+
+title: NothingNL
+tags: girls
+---
+Jij: Niets!
+Meisje 1: Laat ons dan alleen!
+===
+
+title: HelpYouNL
+tags: girls
+---
+Jij: Ik wil gewoon helpen!
+Meisje 1: Hoe?
+    -> "Het is niet veilig om hier te blijven"
+        <<jump NotSafeToStay>>
+===
+
+title: NotSafeToStayNL
+tags: girls
+---
+Jij: Het is niet veilig om hier te blijven
+Meisje 1: Waar moeten we dan naartoe?
+    -> "Zoek hulp"
+        Jij: Jullie moeten hulp zoeken. Er zijn buiten vast mensen die weten wat te doen.
+        Meisje 1: Waarom zouden we naar jouw luisteren? Je bent niet bepaald aardig tegen ons geweest.
+        Jij: Niemand in dit gebouw kan jou helpen om te overleven.
+        Jij: Als je je familie nog wilt zien, dan moet je iemand vinden die dat wel kan. Of wil je ze niet meer zien?
+        Meisje 1: ...
+        Meisje 1: ... We gaan dan maar hulp zoeken.... Kom Jen.
+    -> "Ga naar de kelder"
+        Jij: Het is veiliger in de kelder. De muren zouden het meeste van de gevaarlijke straling buiten moeten houden.
+        Meisje 1: Waarom zouden we naar jouw luisteren? Je bent niet bepaald aardig tegen ons geweest.
+        Jij: Als je hier blijft, dan ga je zeker dood van de straling! In de kelder heb je nog iets meer kans om te overleven.
+        Jij: Dan zie je je familie misschien weer als dit allemaal voorbij is, of wil je ze niet meer zien?
+        Meisje 1: ...
+        Meisje 1: ... We gaan dan wel naar de kelder... Kom Jen.
+===
+
+title: GrabFoodNL
+---
+Je pakt wat eten en water
+Je ziet dat de eerste hulp kit die normaal achter de toonbank staat weg is
+===
