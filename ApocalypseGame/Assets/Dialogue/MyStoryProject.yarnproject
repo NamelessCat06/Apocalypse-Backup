@@ -7,7 +7,7 @@
     "**/*~/*"
   ],
   "localisation": {
-    "nl-NL": {
+    "nl": {
       "strings": "NL_Dialogue2.csv"
     }
   },
