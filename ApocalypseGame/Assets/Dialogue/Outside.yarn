@@ -1,40 +1,60 @@
 ﻿title: TalkMan
 tags: man
 ---
-The man is struggling to get an unconscious person out of the building.
-They are covered in severe burns and their skin looks like its about to fall off.
-Man: Please help me, the building is about to collapse!
-    -> Help him
-        You wrap your arms around the unconscious persons chest and pull with your full bodyweight.
-        After a while you two finally get the person out of the burning building.
-        Man: We need to get him somewhere safe.
-        Man: If we don't treat these burns soon, he will die.
-            -> "Go to the ER"
-                You: Take him to the ER in town, they can help.
-                Man: It is a long walk though... I'm not sure if I'm able to carry him that long
-                You: You can also go to the school, but they only have first aid kits there.
-                You: He needs better treatment than the stuff you get in those.
-                Man: ... you're right.
-                He puts the burned man over his shoulders.
-                Man: Thank you for helping
-            -> "Take him inside"
-                You: Take him do the school.
-                You: It's very close and it's safe there from the radiation and the fires.
-                Man: Hmmmm, that could work...
-                Man: ...But we won't have anything to treat his wounds with.
-                <<if has_item("Player","Food")>>
-                    You: Normally there's a first aid kit in the cafeteria, but someone took it.
-                    You: I do know they keep another one in the basement, so you might want to take a look there.
-                <<else>>
-                    You: There should be a first aid kit in the cafeteria.
-                    You: Something in there must help against burns.
-                <<endif>>
-                Man: I'm not sure if that's good enough for these burns... these need hospital treatment
-                You: I don't think there are many other options... You will have to wait for the rescue services.
-                Man: ...
-                Man: We will take a look.
-                Man: It's better than nothing at least
-                He puts the burned man over his shoulders.
-                Man: Thank you for helping
-    -> Leave him
+<<declare $talkedMan = "false">>
+<<if $talkedMan == "false">>
+    The man is struggling to get an unconscious person out of the building. #line:0f7e874 
+    They are covered in severe burns and their skin looks like its about to fall off. #line:00a5068 
+    Man: Please help me, the building is about to collapse! #line:0bac5e0 
+        -> Help him #line:0690a42
+            <<declare $rubbleCleared = 0>>
+            <<set $talkedMan to "true">>
+            <<set_enabled_in_unity "ProximityTrigger1" true>>
+            <<set_enabled_in_unity "ProximityTrigger2" true>>
+            <<set_enabled_in_unity "ProximityTrigger3" true>>
+        -> Leave him #line:04b620e
+<<else>>
+    <<jump AfterHelp>>
+<<endif>>
+===
+
+title: AfterHelp
+tags: man
+---
+<<if $rubbleCleared == 3>>
+    You wrap your arms around the unconscious persons chest and pull with your full bodyweight. #line:0ff146b 
+    After a while you two finally get the person out of the burning building. #line:09f33b3 
+    Man: We need to get him somewhere safe. #line:034521c 
+    Man: If we don't treat these burns soon, he will die. #line:0065c19 
+        -> "Go to the ER" #line:060c9b8 
+            You: Take him to the ER in town, they can help. #line:0562a17 
+            Man: It is a long walk though... I'm not sure if I'm able to carry him that long #line:0ecbb55 
+            You: You can also go to the school, but they only have first aid kits there. #line:039aa34 
+            You: He needs better treatment than the stuff you get in those. #line:0ba76d2 
+            Man: ... you're right. #line:0983b7d 
+            He puts the burned man over his shoulders. #line:0b0754e 
+            Man: Thank you for helping #line:0eb4c77 
+        -> "Take him inside" #line:06c2302 
+            You: Take him do the school. #line:0ba964e 
+            You: It's very close and it's safe there from the radiation and the fires. #line:0bdb8c0 
+            Man: Hmmmm, that could work... #line:0fbd33e 
+            Man: ...But we won't have anything to treat his wounds with. #line:06a23c5 
+            <<if has_item("Player","Food")>>
+                You: Normally there's a first aid kit in the cafeteria, but someone took it. #line:07afc1a 
+                You: I do know they keep another one in the basement, so you might want to take a look there. #line:0083c73 
+            <<else>>
+                You: There should be a first aid kit in the cafeteria. #line:0d18024 
+                You: Something in there must help against burns. #line:0efda6d 
+            <<endif>>
+            Man: I'm not sure if that's good enough for these burns... these need hospital treatment #line:015a4fd 
+            You: I don't think there are many other options... You will have to wait for the rescue services. #line:06b80eb 
+            Man: ... #line:0c9a172 
+            Man: We will take a look. #line:00f537a 
+            Man: It's better than nothing at least #line:06ff458 
+            He puts the burned man over his shoulders. #line:0aa075d 
+            Man: Thank you for helping #line:00ead83
+<<else>>
+    Man: I can't get him out like this
+    Man: Clear the rubble
+<<endif>>
 ===

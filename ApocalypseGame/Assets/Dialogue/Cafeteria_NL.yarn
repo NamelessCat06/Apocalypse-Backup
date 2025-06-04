@@ -1,90 +1,90 @@
 ﻿title: TalkGirlsNL
 tags: girls
 ---
-Jij: Gaat het wel goed met jullie?
-Meisje 1: Het is prima... gewoon een grote schok, dat is het.
-    -> Praat met het andere meisje
-        Jij: Ben je gewond?
-        Het huilende meisje schud haar hoofd
-        Meisje 2: H-het is gewoon een kleine snee van het glas. N-niets ergs...
-        Jij: Ah...
-            -> "Waarom huil je dan?"
+Jij: Gaat het wel goed met jullie? #line:06ebe80 
+Meisje 1: Het is prima... gewoon een grote schok, dat is het. #line:0dccd85 
+    -> Praat met het andere meisje #line:0ced2a9 
+        Jij: Ben je gewond? #line:04a6fd2 
+        Het huilende meisje schud haar hoofd #line:0a26ad9 
+        Meisje 2: H-het is gewoon een kleine snee van het glas. N-niets ergs... #line:0d0a286 
+        Jij: Ah... #line:0bb1af4 
+            -> "Waarom huil je dan?" #line:073d791 
                 <<jump WhyCrying>>
-            -> "Het is niet veilig om hier te blijven"
+            -> "Het is niet veilig om hier te blijven" #line:03defec 
                 <<jump NotSafeToStay>>
-    -> "Weet je het zeker?"
-        Meisje 1: Ja we weten het zeker?! Wat moet je?
-            -> "Niets"
+    -> "Weet je het zeker?" #line:0ed7200 
+        Meisje 1: Ja we weten het zeker?! Wat moet je? #line:01fcf85 
+            -> "Niets" #line:0355820 
                 <<jump Nothing>>
-            -> "Ik wil gewoon helpen!"
+            -> "Ik wil gewoon helpen!" #line:09ca1ca 
                 <<jump HelpYou>>
-    -> Laat ze met rust
+    -> Laat ze met rust #line:0df3965 
 ===
 
 title: WhyCryingNL
 tags: girls
 ---
-Jij: Waarom huil je dan?
-Het huilende meisje kijkt je verward aan. Haar ogen zijn rood.
-Het ander meisje staart je verbijsterd aan.
-Meisje 1: ... omdat er net een bom is ontploft?!? Hoe is dat geen goede reden om te huilen?!
-Meisje 1: Misschien zien we onze familie wel nooit meer terug!
-    -> "Het is niet veilig om hier te blijven"
+Jij: Waarom huil je dan? #line:0a6d128 
+Het huilende meisje kijkt je verward aan. Haar ogen zijn rood. #line:013d0cb 
+Het ander meisje staart je verbijsterd aan. #line:0118521 
+Meisje 1: ... omdat er net een bom is ontploft?!? Hoe is dat geen goede reden om te huilen?! #line:003a3f2 
+Meisje 1: Misschien zien we onze familie wel nooit meer terug! #line:0e347dc 
+    -> "Het is niet veilig om hier te blijven" #line:0578498 
         <<jump NotSafeToStay>>
-    -> "Oh... sorry..."
+    -> "Oh... sorry..." #line:0b784ea 
         <<jump ImSorry>>
 ===
 
 title: ImSorryNL
 tags: girls
 ---
-Jij: Oh- s-sorry, ik bedoelde het niet zo...
-Meisje 1: Ughh, wat wil je van ons?!
-    -> "Niets"
+Jij: Oh- s-sorry, ik bedoelde het niet zo... #line:0535c01 
+Meisje 1: Ughh, wat wil je van ons?! #line:0317540 
+    -> "Niets" #line:06fa2e5 
         <<jump Nothing>>
-    -> "Ik wil gewoon helpen!"
+    -> "Ik wil gewoon helpen!" #line:0955306 
         <<jump HelpYou>>
 ===
 
 title: NothingNL
 tags: girls
 ---
-Jij: Niets!
-Meisje 1: Laat ons dan alleen!
+Jij: Niets! #line:01ce5d8 
+Meisje 1: Laat ons dan alleen! #line:037edf8 
 ===
 
 title: HelpYouNL
 tags: girls
 ---
-Jij: Ik wil gewoon helpen!
-Meisje 1: Hoe?
-    -> "Het is niet veilig om hier te blijven"
+Jij: Ik wil gewoon helpen! #line:09ce00a 
+Meisje 1: Hoe? #line:0db459b 
+    -> "Het is niet veilig om hier te blijven" #line:0cd6996 
         <<jump NotSafeToStay>>
 ===
 
 title: NotSafeToStayNL
 tags: girls
 ---
-Jij: Het is niet veilig om hier te blijven
-Meisje 1: Waar moeten we dan naartoe?
-    -> "Zoek hulp"
-        Jij: Jullie moeten hulp zoeken. Er zijn buiten vast mensen die weten wat te doen.
-        Meisje 1: Waarom zouden we naar jouw luisteren? Je bent niet bepaald aardig tegen ons geweest.
-        Jij: Niemand in dit gebouw kan jou helpen om te overleven.
-        Jij: Als je je familie nog wilt zien, dan moet je iemand vinden die dat wel kan. Of wil je ze niet meer zien?
-        Meisje 1: ...
-        Meisje 1: ... We gaan dan maar hulp zoeken.... Kom Jen.
-    -> "Ga naar de kelder"
-        Jij: Het is veiliger in de kelder. De muren zouden het meeste van de gevaarlijke straling buiten moeten houden.
-        Meisje 1: Waarom zouden we naar jouw luisteren? Je bent niet bepaald aardig tegen ons geweest.
-        Jij: Als je hier blijft, dan ga je zeker dood van de straling! In de kelder heb je nog iets meer kans om te overleven.
-        Jij: Dan zie je je familie misschien weer als dit allemaal voorbij is, of wil je ze niet meer zien?
-        Meisje 1: ...
-        Meisje 1: ... We gaan dan wel naar de kelder... Kom Jen.
+Jij: Het is niet veilig om hier te blijven #line:0f52e70 
+Meisje 1: Waar moeten we dan naartoe? #line:0d10ad3 
+    -> "Zoek hulp" #line:0e78cf4 
+        Jij: Jullie moeten hulp zoeken. Er zijn buiten vast mensen die weten wat te doen. #line:0e13667 
+        Meisje 1: Waarom zouden we naar jouw luisteren? Je bent niet bepaald aardig tegen ons geweest. #line:07dc3bc 
+        Jij: Niemand in dit gebouw kan jou helpen om te overleven. #line:0597adc 
+        Jij: Als je je familie nog wilt zien, dan moet je iemand vinden die dat wel kan. Of wil je ze niet meer zien? #line:01f5739 
+        Meisje 1: ... #line:0e022e9 
+        Meisje 1: ... We gaan dan maar hulp zoeken.... Kom Jen. #line:0942f9d 
+    -> "Ga naar de kelder" #line:092e929 
+        Jij: Het is veiliger in de kelder. De muren zouden het meeste van de gevaarlijke straling buiten moeten houden. #line:0c48216 
+        Meisje 1: Waarom zouden we naar jouw luisteren? Je bent niet bepaald aardig tegen ons geweest. #line:08b3655 
+        Jij: Als je hier blijft, dan ga je zeker dood van de straling! In de kelder heb je nog iets meer kans om te overleven. #line:084b5c2 
+        Jij: Dan zie je je familie misschien weer als dit allemaal voorbij is, of wil je ze niet meer zien? #line:0c8bea9 
+        Meisje 1: ... #line:006f924 
+        Meisje 1: ... We gaan dan wel naar de kelder... Kom Jen. #line:0fbe8dc 
 ===
 
 title: GrabFoodNL
 ---
-Je pakt wat eten en water
-Je ziet dat de eerste hulp kit die normaal achter de toonbank staat weg is
+Je pakt wat eten en water #line:036171c 
+Je ziet dat de eerste hulp kit die normaal achter de toonbank staat weg is #line:0ef66a9 
 ===

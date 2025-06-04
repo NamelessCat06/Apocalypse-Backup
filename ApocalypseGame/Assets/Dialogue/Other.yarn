@@ -1,41 +1,54 @@
 ﻿title: Start
 ---
 <<declare $windowJump = 0>>
-<i>Ow... My head...</i>
-<i>...</i>
-<i>... Did a bomb just explode?</i>
-<i>How long was I out for?</i>
-<i>...</i>
-<i>Where is Michael?</i>
-<i>He was just here</i>
-<i>I need to find him and get to safety!</i>
+<i>Ow... My head...</i> #line:0ae1db1 
+<i>...</i> #line:07aabb9 
+<i>... Did a bomb just explode?</i> #line:08df100 
+<i>How long was I out for?</i> #line:0c8e87f 
+<i>I need to get out of here!</i>
+<i>...</i> #line:0f57c65 
+<i>Where is Michael?</i> #line:018f1cd 
+<i>He was just here</i> #line:0855f00 
 ===
 
 title: WindowJumpLow
 ---
 <<if $windowJump < 4>>
-    <i>I probably shouldn't jump through this...</i>
-    <i>The glass could cut me...</i>
+    <i>I probably shouldn't jump through this...</i> #line:0c18527 
+    <i>The glass could cut me...</i> #line:06286b2 
     <<set $windowJump to $windowJump+1>>
 <<elseif $windowJump == 4>>
-    <b>Do you really want to jump through a window that badly?</b>
-        -> Yes
-            <b>Fine, have it your way</b>
+    <b>Do you really want to jump through a window that badly?</b> #line:04cbc40 
+        -> Yes #line:042a1ac 
+            <b>Fine, have it your way</b> #line:0f68603 
             <<set_enabled_in_unity "DownBorders" false>>
             <<set_enabled_in_unity "DownTriggers" True>>
-        -> No
-            <b>Then stop jumping AGAINST THE WINDOW</b>
+        -> No #line:01bb2a3 
+            <b>Then stop jumping AGAINST THE WINDOW</b> #line:09eb644 
 <<endif>>
 ===
 
 title: WindowCut
 ---
-OW-
-You cut yourself on the glass
+OW- #line:0502d3e 
+You cut yourself on the glass #line:09799a9 
 ===
 
 title: WindowJumpHigh
 ---
-<i>I probably shouldn't jump through this...</i>
-<i>Won't get far with broken legs</i>
+<i>I probably shouldn't jump through this...</i> #line:0a74251 
+<i>Won't get far with broken legs</i> #line:0ed70c2 
+===
+
+title: ClearRubble
+---
+{$rubbleCleared} cleared
+===
+
+title: LeaveBorder
+---
+Are you sure you want to leave?
+    -> Yes (end of this part of the story)
+        <i>just imagine you leave the school area and are able to walk around the town</i>
+    -> No
 ===
