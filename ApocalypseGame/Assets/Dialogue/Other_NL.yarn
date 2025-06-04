@@ -1,0 +1,59 @@
+﻿title: StartNL
+---
+<<declare $windowJump1 = 0>>
+<<declare $mainObjective1 = "">>
+<<declare $subObjective1 = "">>
+<<declare $peopleSaved2 = 0>>
+<i>Ow... M'n hoofd...</i>
+<i>...</i>
+<i>... Is er net een bom ontploft?</i>
+<i>Hoe lang was ik buiten westen!?</i>
+<i>Ik moet hier weg!</i>
+<i>...</i>
+<i>Waar is Michael?</i>
+<i>Hij was hier net nog</i>
+<<set $mainObjective1 to "SURVIVE">>
+<<set $subObjective1 to "Find Michael">>
+===
+
+title: WindowJumpLowNL
+---
+<<if $windowJump1 < 4>>
+    <i>Ik moet hier waarschijnlijk niet doorheen springen...</i> 
+    <i>Het glas kan me snijden...</i>
+    <<set $windowJump1 to $windowJump1+1>>
+<<elseif $windowJump1 == 4>>
+    <b>Wil je echt zo graag door het raam springen?</b>
+        -> Ja
+            <b>Prima, we doen het op jou manier</b>
+            <<set_enabled_in_unity "DownBorders" false>>
+            <<set_enabled_in_unity "DownTriggers" True>>
+        -> Nee
+            <b>Spring dan niet de heletijd TEGEN HET RAAM AAN</b>
+<<endif>>
+===
+
+title: WindowCut1
+---
+OW-
+Je snijd jezelf aan het glas
+===
+
+title: WindowJumpHigh1
+---
+<i>Ik moet hier waarschijnlijk niet doorheen springen...</i>
+<i>Kom niet ver met gebroken benen</i>
+===
+
+title: ClearRubble1
+---
+{$rubbleCleared} cleared 
+===
+
+title: LeaveBorder1
+---
+Weet je zeker dat je weg wilt?
+    -> Ja (het einde van dit deel van het verhaal)
+        <i>beeld je in dat je het school deel verlaat en door de stad kan lopen</i>
+    -> Nee
+===

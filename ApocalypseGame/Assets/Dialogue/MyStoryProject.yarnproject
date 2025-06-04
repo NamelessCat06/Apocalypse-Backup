@@ -1,12 +1,16 @@
 {
   "projectFileVersion": 2,
   "sourceFiles": [
-    "*.yarn"
+    "*EN.yarn"
   ],
   "excludeFiles": [
     "**/*~/*"
   ],
-  "localisation": {},
+  "localisation": {
+    "nl-NL": {
+      "strings": "NL_Dialogue2.csv"
+    }
+  },
   "baseLanguage": "en",
   "compilerOptions": {}
 }

@@ -54,7 +54,7 @@ tags: man
             He puts the burned man over his shoulders. #line:0aa075d 
             Man: Thank you for helping #line:00ead83
 <<else>>
-    Man: I can't get him out like this
-    Man: Clear the rubble
+    Man: I can't get him out like this #line:0eb6dc1 
+    Man: Clear the rubble #line:0f83a8b 
 <<endif>>
 ===

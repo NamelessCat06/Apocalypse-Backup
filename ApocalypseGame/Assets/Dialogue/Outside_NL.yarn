@@ -1,0 +1,60 @@
+﻿title: TalkManNL
+tags: man
+---
+<<declare $talkedMan1 = "false">>
+<<if $talkedMan1 == "false">>
+    De man heeft moeite een bewusteloos persoon uit het gebouw te trekken.
+    Het persoon zit onder de brandwonden en hun huid lijkt er bijna af te vallen. 
+    Man: Help me alsjeblieft, het gebouw gaat instorten!
+        -> Help hem
+            <<declare $rubbleCleared2 = 0>>
+            <<set $talkedMan1 to "true">>
+            <<set_enabled_in_unity "ProximityTrigger1" true>>
+            <<set_enabled_in_unity "ProximityTrigger2" true>>
+            <<set_enabled_in_unity "ProximityTrigger3" true>>
+        -> Laat hem
+<<else>>
+    <<jump AfterHelp>>
+<<endif>>
+===
+
+title: AfterHelpNL
+tags: man
+---
+<<if $rubbleCleared2 == 3>>
+    Je pakt het bewusteloze persoon onder zijn armen, en trekt met je volledige lichaamsgewicht.
+    Eindelijk trekken jullie het persoon uit het gebouw.
+    Man: We moeten hem naar veiligheid brengen. 
+    Man: Als deze wonden niet snel verzorgd worden gaat hij dood.
+        -> "Ga naar de spoedeisende hulp"
+            Jij: Breng hem naar de spoedeisende hulp, daar kunnen ze hem helpen.
+            Man: De spoedeisende hulp is ver... Ik weet niet of ik hem zo lang kan dragen.
+            Jij: Je kan ook naar de school gaan maar... daar hebben ze alleen eerste hulp kits.
+            Jij: Hij heeft betere zorg nodig dan je daarmee kan krijgen.
+            Man: ... je hebt gelijk, hij heeft professionele zorg nodig.
+            De man gooit het persoon over zijn schouder.
+            Man: Bedankt voor je hulp.
+        -> "Breng hem naar binnen"
+            Jij: Breng hem naar de school.
+            Jij: Het is hier vlakbij en binnen is het veiliger voor de straling en de branden.
+            Man: Hmmmm, dat kan werken...
+            Man: ...maar, we hebben niets om zijn wonden mee te verzorgen.
+            <<if has_item("Player","Food")>>
+                Jij: Normaal is er een eerste hulp kit in de cafeteria, maar iemand heeft die meegenomen.
+                Jij: Ik weet dat ze er eentje in de kelder hebben, dus daar kan je nog even kijken.
+            <<else>>
+                Jij: Als het goed is is er een eerste hulp kit in de cafeteria.
+                Jij: Daarin zit vast iets dat tijdelijk helpt.
+            <<endif>>
+            Man: Ik weet niet of een eerste hulp kit goed genoeg is voor deze wonden... hij moet naar het ziekenhuis!
+            Jij: Er zijn niet veel andere mogelijkheden... Je zult moeten wachten tot de reddingsdiensten komen.
+            Man: ... 
+            Man: Ik ga wel kijken.
+            Man: Het is tenminste beter dan niets...
+            De man gooit het persoon over zijn schouder.
+            Man: Bedankt voor je hulp.
+<<else>>
+    Man: Ik kan hem er zo niet uit krijgen
+    Man: Verwijder het puin
+<<endif>>
+===

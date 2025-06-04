@@ -1,0 +1,30 @@
+﻿title: TalkBoyNL
+tags: boy
+---
+Jij: Gaat het?
+De jongen reageert niet
+    -> Stop met huilen
+        Jij: HEY, STOP MET HUILEN
+        Je slaat de jongen.
+        Hij kijkt geschokt op... 
+        Jongen: WAT IS ER MIS MET JOU?!? 
+    -> Help hem
+        Je gaat naast de jongen zitten. Hij blijft hyperventileren en naar de vloer staren. Hij heeft tranen in zijn ogen.
+        Jij: Het is belangrijk om te blijven ademen; ik kan je helpen.
+        Jij: We beginnen met inademen vier tellen, daarna houden we het vast voor zeven tellen en dan ademen we uit in acht tellen, oké?
+        Jij: Adem in... 2... 3... 4...
+        Jij: Houd vast... 2... 3... 4... 5... 6... 7...
+        Jij: Adem uit... 2... 3... 4... 5... 6... 7... 8... 
+        De jongen doet mee. 
+        Je blijft tellen en ademen tot je ziet dat de jongen iets rustiger is. 
+        Jij: Is that better?
+        De jongen geeft een knikje
+            -> "Je moet hulp zoeken"
+                Jij: Je moet hulp zoeken. Er zijn buiten vast mensen die weten wat te doen.
+                De jongen geeft een knikje
+                Jongen: <i>Dankje...</i>
+            -> Stuur hem naar de kelder
+                Jij: Het is veiliger in de kelder. De muren zouden het meeste van de gevaarlijke straling buiten moeten houden.
+                De jongen geeft een knikje
+                Jongen: <i>Dankje...</i>
+===

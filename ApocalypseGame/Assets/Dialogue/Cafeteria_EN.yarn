@@ -1,8 +1,8 @@
 ﻿title: TalkGirls
 tags: girls
 ---
-You: Are you two doing okay? #line:04ce3ef 
-Girl 1: It's fine... just a big shock, that's all. #line:06732a9 
+You: Are you two doing okay? #line:08a6253 
+Girl 1: It's fine... just a big shock, that's all. #line:058bbbc 
     -> Talk to the other girl #line:0db17ba 
         You: Did you get hurt? #line:060b8bd 
         The sobbing girl shakes her head. #line:0c8f156 
