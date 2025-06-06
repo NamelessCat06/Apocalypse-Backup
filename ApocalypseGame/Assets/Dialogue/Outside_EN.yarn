@@ -12,6 +12,8 @@ tags: man
             <<set_enabled_in_unity "ProximityTrigger1" true>>
             <<set_enabled_in_unity "ProximityTrigger2" true>>
             <<set_enabled_in_unity "ProximityTrigger3" true>>
+            <<set $task to "Clear the rubble">>
+            <<set_enabled_in_unity "Amount" true>>
         -> Leave him #line:04b620e
 <<else>>
     <<jump AfterHelp>>
@@ -22,6 +24,8 @@ title: AfterHelp
 tags: man
 ---
 <<if $rubbleCleared == 3>>
+    <<set $task to "">>
+    <<set_enabled_in_unity "Amount" false>>
     You wrap your arms around the unconscious persons chest and pull with your full bodyweight. #line:0ff146b 
     After a while you two finally get the person out of the burning building. #line:09f33b3 
     Man: We need to get him somewhere safe. #line:034521c 
@@ -34,6 +38,8 @@ tags: man
             Man: ... you're right. #line:0983b7d 
             He puts the burned man over his shoulders. #line:0b0754e 
             Man: Thank you for helping #line:0eb4c77 
+            <<walk_to "Man" "LeaveLocation">>
+            <<walk_to "UnconciousMan" "LeaveLocation">> 
         -> "Take him inside" #line:06c2302 
             You: Take him do the school. #line:0ba964e 
             You: It's very close and it's safe there from the radiation and the fires. #line:0bdb8c0 
@@ -53,6 +59,8 @@ tags: man
             Man: It's better than nothing at least #line:06ff458 
             He puts the burned man over his shoulders. #line:0aa075d 
             Man: Thank you for helping #line:00ead83
+            <<walk_to "Man" "BasementLocation">>
+            <<walk_to "UnconciousMan" "BasementLocation">>
 <<else>>
     Man: I can't get him out like this #line:0eb6dc1 
     Man: Clear the rubble #line:0f83a8b 

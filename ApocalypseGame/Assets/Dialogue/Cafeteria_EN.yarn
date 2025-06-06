@@ -74,6 +74,8 @@ Girl 1: Where else are we supposed to go then? #line:0369a76
         You: If you want to see your family again, you should probably find someone who can. Or do you not want to see them again? #line:0b630aa 
         Girl 1: ... #line:026c8aa 
         Girl 1:... We'll go find help then.... Come on Jen. #line:03140fd 
+        <<walk_to "Girl 1" "LeaveLocation">>
+        <<walk_to "Girl 2 (Jen)" "LeaveLocation">> 
     -> "Go to the basement" #line:0d2b8e7 
         You: It's safer in the basement. The walls should keep out most of the dangerous radiation. #line:0cea00f 
         Girl 1: Why would we listen to you? You've not exactly been kind to us. #line:0bd0ff3 
@@ -81,6 +83,8 @@ Girl 1: Where else are we supposed to go then? #line:0369a76
         You: You might be able to see your family again once this is all over. Or do you not want to see them? #line:05bd925 
         Girl 1: ... #line:0f87748 
         Girl 1: We'll go to the basement then... Come on Jen. #line:06fde65 
+        <<walk_to "Girl 1" "BasementLocation">>
+        <<walk_to "Girl 2 (Jen)" "BasementLocation">>
 ===
 
 title: GrabFood

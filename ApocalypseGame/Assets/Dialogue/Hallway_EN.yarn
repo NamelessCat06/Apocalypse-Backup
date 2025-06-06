@@ -23,8 +23,10 @@ The boy doesn't respond #line:02c4e94
                 You: You should probably seek help. Some people outside must know what to do. #line:00eaa9c 
                 The boy gives a nod #line:0fa349b 
                 Boy: <i>Thank you...</i> #line:0a6472c 
+                <<walk_to "Boy" "LeaveLocation">>
             -> Send him to the basement #line:0f2a45f 
                 You: It's safer in the basement. The walls should keep out most of the dangerous radiation. #line:0142f6c 
                 The boy gives a nod #line:0d07b19 
                 Boy: <i>Thank you...</i> #line:0b83472 
+                <<walk_to "Boy" "BasementLocation">>
 ===

@@ -4,6 +4,7 @@
 <<declare $mainObjective = "">>
 <<declare $subObjective = "">>
 <<declare $peopleSaved = 0>>
+<<declare $task = "">>
 <i>Ow... My head...</i> #line:0ae1db1 
 <i>...</i> #line:07aabb9 
 <i>... Did a bomb just explode?</i> #line:08df100 
@@ -43,11 +44,6 @@ title: WindowJumpHigh
 ---
 <i>I probably shouldn't jump through this...</i> #line:0a74251 
 <i>Won't get far with broken legs</i> #line:0ed70c2 
-===
-
-title: ClearRubble
----
-{$rubbleCleared} cleared #line:0caaf23 
 ===
 
 title: LeaveBorder
