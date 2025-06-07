@@ -6,7 +6,7 @@ title: Start
 <<declare $windowJump = 0>>
 <<declare $mainObjective = "">>
 <<declare $subObjective = "">>
-<<declare $peopleSaved = 0>>
+<<declare $peopleObjective = "">>
 <<declare $task = "">>
 <i>Ow... My head...</i> #line:0ae1db1 
 <i>...</i> #line:07aabb9 
@@ -57,6 +57,18 @@ Are you sure you want to leave? #line:043359f
     -> No #line:04f88fe 
 ===
 
+title: ExitBasement
+---
+-> Leave the basement
+    <<teleport "Player" "BasementLocation">>
+-> Close off the basement (end of this part of the story)
+    <<if $peopleObjective == "Help other people">>
+        <i>just imagine you board up the basement entrance and stay inside with the other people</i>
+    <<else>>
+        <i>just imagine you board up the basement entrance and stay inside</i>
+    <<endif>>
+===
+
 //  -----
 //  Hallway
 //  -----
@@ -71,6 +83,7 @@ The boy doesn't respond #line:02c4e94
         He looks up at you in shock... #line:0996a29 
         Boy: WHAT IS WRONG WITH YOU?!? #line:0e6cebc 
     -> Help him #line:048874f 
+        <<set $peopleObjective to "Help other people">>
         You sit down next to the boy. He keeps hyperventilating and staring at the floor. There are tears in his eyes. #line:086a13f 
         You: It is important for you to breathe, I can help you with that. #line:0f14fa4 
         You: Just do as I do #line:0831592 
@@ -163,6 +176,7 @@ Girl 1: How? #line:0364861
 title: NotSafeToStay
 tags: girls
 ---
+<<set $peopleObjective to "Help other people">>
 You: It's not safe to stay here #line:02a92bc 
 Girl 1: Where else are we supposed to go then? #line:0369a76 
     -> "Seek help" #line:0638baf 
@@ -172,7 +186,7 @@ Girl 1: Where else are we supposed to go then? #line:0369a76
         You: If you want to see your family again, you should probably find someone who can. Or do you not want to see them again? #line:0b630aa 
         Girl 1: ... #line:026c8aa 
         Girl 1:... We'll go find help then.... Come on Jen. #line:03140fd 
-        <<walk_to "Girl 1" "LeaveLocation">>
+        <<walk_to "Girl 1" "LeaveLocation" 0 false>>
         <<walk_to "Girl 2 (Jen)" "LeaveLocation">> 
     -> "Go to the basement" #line:0d2b8e7 
         You: It's safer in the basement. The walls should keep out most of the dangerous radiation. #line:0cea00f 
@@ -181,7 +195,7 @@ Girl 1: Where else are we supposed to go then? #line:0369a76
         You: You might be able to see your family again once this is all over. Or do you not want to see them? #line:05bd925 
         Girl 1: ... #line:0f87748 
         Girl 1: We'll go to the basement then... Come on Jen. #line:06fde65 
-        <<walk_to "Girl 1" "BasementLocation">>
+        <<walk_to "Girl 1" "BasementLocation" 0 false>>
         <<walk_to "Girl 2 (Jen)" "BasementLocation">>
 ===
 
@@ -203,6 +217,7 @@ tags: man
     They are covered in severe burns and their skin looks like its about to fall off. #line:00a5068 
     Man: Please help me, the building is about to collapse! #line:0bac5e0 
         -> Help him #line:0690a42
+            <<set $peopleObjective to "Help other people">>
             <<declare $rubbleCleared = 0>>
             <<set $talkedMan to "true">>
             <<set_enabled_in_unity "ProximityTrigger1" true>>
@@ -234,8 +249,10 @@ tags: man
             Man: ... you're right. #line:0983b7d 
             He puts the burned man over his shoulders. #line:0b0754e 
             Man: Thank you for helping #line:0eb4c77 
-            <<walk_to "Man" "LeaveLocation">>
+            <<walk_to "Man" "LeaveLocation" 0 false>>
             <<walk_to "UnconciousMan" "LeaveLocation">>
+            <<set_enabled_in_unity "Man" false>>
+            <<set_enabled_in_unity "UnconciousMan" false>>
         -> "Take him inside" #line:06c2302 
             You: Take him do the school. #line:0ba964e 
             You: It's very close and it's safe there from the radiation and the fires. #line:0bdb8c0 
@@ -255,7 +272,8 @@ tags: man
             Man: It's better than nothing at least #line:06ff458 
             He puts the burned man over his shoulders. #line:0aa075d 
             Man: Thank you for helping #line:00ead83
-            <<walk_to "Man" "BasementLocation">>
+            <<walk_to "Man" "BasementLocation" 0 false>>
+            //<<teleport "Man" "InBasement">>
             <<walk_to "UnconciousMan" "BasementLocation">>
 <<else>>
     Man: I can't get him out like this #line:0eb6dc1 
