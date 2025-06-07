@@ -1,4 +1,4 @@
-﻿title: TalkMan
+﻿title: TalkManEN
 tags: man
 ---
 <<declare $talkedMan = "false">>
@@ -20,7 +20,7 @@ tags: man
 <<endif>>
 ===
 
-title: AfterHelp
+title: AfterHelpEN
 tags: man
 ---
 <<if $rubbleCleared == 3>>

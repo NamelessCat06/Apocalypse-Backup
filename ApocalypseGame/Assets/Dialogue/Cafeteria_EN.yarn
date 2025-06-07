@@ -1,4 +1,4 @@
-﻿title: TalkGirls
+﻿title: TalkGirlsEN
 tags: girls
 ---
 You: Are you two doing okay? #line:08a6253 
@@ -21,7 +21,7 @@ Girl 1: It's fine... just a big shock, that's all. #line:058bbbc
     -> "I'll leave you to it" #line:0b692d2 
 ===
 
-title: WhyCrying
+title: WhyCryingEN
 tags: girls
 ---
 You: Why are you crying then? #line:01601af 
@@ -35,7 +35,7 @@ Girl 1: We might not be able to see our family ever again! #line:0ef9ec0
         <<jump ImSorry>>
 ===
 
-title: ImSorry
+title: ImSorryEN
 tags: girls
 ---
 You: Oh I'm sorry, I didn't mean for it to come out that way... #line:0d90c5e 
@@ -46,14 +46,14 @@ Girl 1: What do you want from us #line:02942bc
         <<jump HelpYou>>
 ===
 
-title: Nothing
+title: NothingEN
 tags: girls
 ---
 You: Nothing! #line:0939935 
 Girl 1: Just leave us alone then. #line:0279099 
 ===
 
-title: HelpYou
+title: HelpYouEN
 tags: girls
 ---
 You: I just want to help you! #line:0ec823d 
@@ -62,7 +62,7 @@ Girl 1: How? #line:0364861
         <<jump NotSafeToStay>>
 ===
 
-title: NotSafeToStay
+title: NotSafeToStayEN
 tags: girls
 ---
 You: It's not safe to stay here #line:02a92bc 
@@ -87,7 +87,7 @@ Girl 1: Where else are we supposed to go then? #line:0369a76
         <<walk_to "Girl 2 (Jen)" "BasementLocation">>
 ===
 
-title: GrabFood
+title: GrabFoodEN
 ---
 You grabbed some food and water #line:0ac0c41 
 You notice the first aid kit behind the counter is missing #line:0465a31 

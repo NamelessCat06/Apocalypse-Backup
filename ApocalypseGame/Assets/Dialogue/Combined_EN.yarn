@@ -1,0 +1,264 @@
+﻿//  -----
+//  Other
+//  -----
+title: Start
+---
+<<declare $windowJump = 0>>
+<<declare $mainObjective = "">>
+<<declare $subObjective = "">>
+<<declare $peopleSaved = 0>>
+<<declare $task = "">>
+<i>Ow... My head...</i> #line:0ae1db1 
+<i>...</i> #line:07aabb9 
+<i>... Did a bomb just explode?</i> #line:08df100 
+<i>How long was I out for?</i> #line:0c8e87f 
+<i>I need to get out of here!</i> #line:049844d 
+<i>...</i> #line:0f57c65 
+<i>Where is Michael?</i> #line:018f1cd 
+<i>He was just here</i> #line:0855f00 
+<<set $mainObjective to "SURVIVE">>
+<<set $subObjective to "Find Michael">>
+===
+
+title: WindowJumpLow
+---
+<<if $windowJump < 4>>
+    <i>I probably shouldn't jump through this...</i> #line:0c18527 
+    <i>The glass could cut me...</i> #line:06286b2 
+    <<set $windowJump to $windowJump+1>>
+<<elseif $windowJump == 4>>
+    <b>Do you really want to jump through a window that badly?</b> #line:04cbc40 
+        -> Yes #line:042a1ac 
+            <b>Fine, have it your way</b> #line:0f68603 
+            <<set_enabled_in_unity "DownBorders" false>>
+            <<set_enabled_in_unity "DownTriggers" True>>
+        -> No #line:01bb2a3 
+            <b>Then stop jumping AGAINST THE WINDOW</b> #line:09eb644 
+<<endif>>
+===
+
+title: WindowCut
+---
+OW- #line:0502d3e 
+You cut yourself on the glass #line:09799a9 
+===
+
+title: WindowJumpHigh
+---
+<i>I probably shouldn't jump through this...</i> #line:0a74251 
+<i>Won't get far with broken legs</i> #line:0ed70c2 
+===
+
+title: LeaveBorder
+---
+Are you sure you want to leave? #line:043359f 
+    -> Yes (end of this part of the story) #line:0420019 
+        <i>just imagine you leave the school area and are able to walk around the town</i> #line:0c58f67 
+    -> No #line:04f88fe 
+===
+
+//  -----
+//  Hallway
+//  -----
+title: TalkBoy
+tags: boy
+---
+You: Are you okay? #line:0930281 
+The boy doesn't respond #line:02c4e94 
+    -> Snap out of it #line:0cea63e 
+        You: HEY, SNAP OUT OF IT #line:068b697 
+        You slap the boy. #line:068a9c1 
+        He looks up at you in shock... #line:0996a29 
+        Boy: WHAT IS WRONG WITH YOU?!? #line:0e6cebc 
+    -> Help him #line:048874f 
+        You sit down next to the boy. He keeps hyperventilating and staring at the floor. There are tears in his eyes. #line:086a13f 
+        You: It is important for you to breathe, I can help you with that. #line:0f14fa4 
+        You: Just do as I do #line:0831592 
+        You: Inhale... 2... 3... 4... #line:0005b1b 
+        You: Hold... 2... 3... 4... 5... 6... 7... #line:0447449 
+        You: Exhale... 2... 3... 4... 5... 6... 7... 8... #line:093054b 
+        The boy joins in. #line:0526120 
+        You keep counting and breathing until you notice the boy has calmed down. #line:062613d 
+        You: Is that better? #line:0ae2298 
+        The boy nods slightly #line:0c02775 
+            -> "You should find some help" #line:02b061d 
+                You: You should probably seek help. Some people outside must know what to do. #line:00eaa9c 
+                The boy gives a nod #line:0fa349b 
+                Boy: <i>Thank you...</i> #line:0a6472c 
+                <<walk_to "Boy" "LeaveLocation">>
+            -> Send him to the basement #line:0f2a45f 
+                You: It's safer in the basement. The walls should keep out most of the dangerous radiation. #line:0142f6c 
+                The boy gives a nod #line:0d07b19 
+                Boy: <i>Thank you...</i> #line:0b83472 
+                <<walk_to "Boy" "BasementLocation">>
+===
+
+//  -----
+//  Cafeteria
+//  -----
+title: TalkGirls
+tags: girls
+---
+You: Are you two doing okay? #line:08a6253 
+Girl 1: It's fine... just a big shock, that's all. #line:058bbbc 
+    -> Talk to the other girl #line:0db17ba 
+        You: Did you get hurt? #line:060b8bd 
+        The sobbing girl shakes her head. #line:0c8f156 
+        Girl 2: I-It is j-j-just a small cut from the glass. Nothing b-bad... #line:0c43264 
+        You: Ah... #line:0cbbba2 
+            -> "Why are you crying then?" #line:0dd198a 
+                <<jump WhyCrying>>
+            -> "It's not safe to stay here" #line:001faae 
+                <<jump NotSafeToStay>>
+    -> "Are you sure?" #line:03c17dd 
+        Girl 1: Yes, we're sure?! What do you want? #line:03a3e69 
+            -> "Nothing" #line:046d38b 
+                <<jump Nothing>>
+            -> "I just want to help you" #line:0d721a2 
+                <<jump HelpYou>>
+    -> "I'll leave you to it" #line:0b692d2 
+===
+
+title: WhyCrying
+tags: girls
+---
+You: Why are you crying then? #line:01601af 
+The crying girl looks up at you, confused. Her eyes are red. #line:0e7a5eb 
+The other girl stares at you dumbfounded. #line:0966b8f 
+Girl 1: ... because a bomb just exploded?!? In what world is that not a good reason to cry?! #line:0c69403 
+Girl 1: We might not be able to see our family ever again! #line:0ef9ec0 
+    -> "It's not safe to stay here" #line:0068e07 
+        <<jump NotSafeToStay>>
+    -> "Oh... I'm sorry..." #line:059effe 
+        <<jump ImSorry>>
+===
+
+title: ImSorry
+tags: girls
+---
+You: Oh I'm sorry, I didn't mean for it to come out that way... #line:0d90c5e 
+Girl 1: What do you want from us #line:02942bc 
+    -> "Nothing" #line:0eda5b9 
+        <<jump Nothing>>
+    -> "I just want to help you" #line:040e938 
+        <<jump HelpYou>>
+===
+
+title: Nothing
+tags: girls
+---
+You: Nothing! #line:0939935 
+Girl 1: Just leave us alone then. #line:0279099 
+===
+
+title: HelpYou
+tags: girls
+---
+You: I just want to help you! #line:0ec823d 
+Girl 1: How? #line:0364861 
+    -> "It's not safe to stay here" #line:0ee29e3 
+        <<jump NotSafeToStay>>
+===
+
+title: NotSafeToStay
+tags: girls
+---
+You: It's not safe to stay here #line:02a92bc 
+Girl 1: Where else are we supposed to go then? #line:0369a76 
+    -> "Seek help" #line:0638baf 
+        You: You should probably seek help. Some people outside must know what to do. #line:07f9d0a 
+        Girl 1: Why would we listen to you? You've not exactly been kind to us. #line:0ff0de7 
+        You: I and no one in this place will be able to help you survive. #line:0c2a5ae 
+        You: If you want to see your family again, you should probably find someone who can. Or do you not want to see them again? #line:0b630aa 
+        Girl 1: ... #line:026c8aa 
+        Girl 1:... We'll go find help then.... Come on Jen. #line:03140fd 
+        <<walk_to "Girl 1" "LeaveLocation">>
+        <<walk_to "Girl 2 (Jen)" "LeaveLocation">> 
+    -> "Go to the basement" #line:0d2b8e7 
+        You: It's safer in the basement. The walls should keep out most of the dangerous radiation. #line:0cea00f 
+        Girl 1: Why would we listen to you? You've not exactly been kind to us. #line:0bd0ff3 
+        You: If you stay here you will surely die of radiation poisoning! In the basement you might have a bit more chance of survival. #line:0fdc6c2 
+        You: You might be able to see your family again once this is all over. Or do you not want to see them? #line:05bd925 
+        Girl 1: ... #line:0f87748 
+        Girl 1: We'll go to the basement then... Come on Jen. #line:06fde65 
+        <<walk_to "Girl 1" "BasementLocation">>
+        <<walk_to "Girl 2 (Jen)" "BasementLocation">>
+===
+
+title: GrabFood
+---
+You grabbed some food and water #line:0ac0c41 
+You notice the first aid kit behind the counter is missing #line:0465a31 
+===
+
+//  -----
+//  Outside
+//  -----
+title: TalkMan
+tags: man
+---
+<<declare $talkedMan = "false">>
+<<if $talkedMan == "false">>
+    The man is struggling to get an unconscious person out of the building. #line:0f7e874 
+    They are covered in severe burns and their skin looks like its about to fall off. #line:00a5068 
+    Man: Please help me, the building is about to collapse! #line:0bac5e0 
+        -> Help him #line:0690a42
+            <<declare $rubbleCleared = 0>>
+            <<set $talkedMan to "true">>
+            <<set_enabled_in_unity "ProximityTrigger1" true>>
+            <<set_enabled_in_unity "ProximityTrigger2" true>>
+            <<set_enabled_in_unity "ProximityTrigger3" true>>
+            <<set $task to "Clear the rubble">>
+            <<set_enabled_in_unity "Amount" true>>
+        -> Leave him #line:04b620e
+<<else>>
+    <<jump AfterHelp>>
+<<endif>>
+===
+
+title: AfterHelp
+tags: man
+---
+<<if $rubbleCleared == 3>>
+    <<set $task to "">>
+    <<set_enabled_in_unity "Amount" false>>
+    You wrap your arms around the unconscious persons chest and pull with your full bodyweight. #line:0ff146b 
+    After a while you two finally get the person out of the burning building. #line:09f33b3 
+    Man: We need to get him somewhere safe. #line:034521c 
+    Man: If we don't treat these burns soon, he will die. #line:0065c19 
+        -> "Go to the ER" #line:060c9b8 
+            You: Take him to the ER in town, they can help. #line:0562a17 
+            Man: It is a long walk though... I'm not sure if I'm able to carry him that long #line:0ecbb55 
+            You: You can also go to the school, but they only have first aid kits there. #line:039aa34 
+            You: He needs better treatment than the stuff you get in those. #line:0ba76d2 
+            Man: ... you're right. #line:0983b7d 
+            He puts the burned man over his shoulders. #line:0b0754e 
+            Man: Thank you for helping #line:0eb4c77 
+            <<walk_to "Man" "LeaveLocation">>
+            <<walk_to "UnconciousMan" "LeaveLocation">>
+        -> "Take him inside" #line:06c2302 
+            You: Take him do the school. #line:0ba964e 
+            You: It's very close and it's safe there from the radiation and the fires. #line:0bdb8c0 
+            Man: Hmmmm, that could work... #line:0fbd33e 
+            Man: ...But we won't have anything to treat his wounds with. #line:06a23c5 
+            <<if has_item("Player","Food")>>
+                You: Normally there's a first aid kit in the cafeteria, but someone took it. #line:07afc1a 
+                You: I do know they keep another one in the basement, so you might want to take a look there. #line:0083c73 
+            <<else>>
+                You: There should be a first aid kit in the cafeteria. #line:0d18024 
+                You: Something in there must help against burns. #line:0efda6d 
+            <<endif>>
+            Man: I'm not sure if that's good enough for these burns... these need hospital treatment #line:015a4fd 
+            You: I don't think there are many other options... You will have to wait for the rescue services. #line:06b80eb 
+            Man: ... #line:0c9a172 
+            Man: We will take a look. #line:00f537a 
+            Man: It's better than nothing at least #line:06ff458 
+            He puts the burned man over his shoulders. #line:0aa075d 
+            Man: Thank you for helping #line:00ead83
+            <<walk_to "Man" "BasementLocation">>
+            <<walk_to "UnconciousMan" "BasementLocation">>
+<<else>>
+    Man: I can't get him out like this #line:0eb6dc1 
+    Man: Clear the rubble #line:0f83a8b 
+<<endif>>
+===

@@ -1,4 +1,4 @@
-﻿title: Start
+﻿title: StartEN
 ---
 <<declare $windowJump = 0>>
 <<declare $mainObjective = "">>
@@ -17,7 +17,7 @@
 <<set $subObjective to "Find Michael">>
 ===
 
-title: WindowJumpLow
+title: WindowJumpLowEN
 ---
 <<if $windowJump < 4>>
     <i>I probably shouldn't jump through this...</i> #line:0c18527 
@@ -34,19 +34,19 @@ title: WindowJumpLow
 <<endif>>
 ===
 
-title: WindowCut
+title: WindowCutEN
 ---
 OW- #line:0502d3e 
 You cut yourself on the glass #line:09799a9 
 ===
 
-title: WindowJumpHigh
+title: WindowJumpHighEN
 ---
 <i>I probably shouldn't jump through this...</i> #line:0a74251 
 <i>Won't get far with broken legs</i> #line:0ed70c2 
 ===
 
-title: LeaveBorder
+title: LeaveBorderEN
 ---
 Are you sure you want to leave? #line:043359f 
     -> Yes (end of this part of the story) #line:0420019 
