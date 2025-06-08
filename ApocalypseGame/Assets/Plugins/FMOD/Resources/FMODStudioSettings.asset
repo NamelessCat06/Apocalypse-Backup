@@ -380,8 +380,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../Audio/DialogueAudio/DialogueAudio.fspro
-  sourceBankPath: ../../Audio/DialogueAudio/Build
+  sourceProjectPath: ../../Audio/DialogueAudio/Dialogue/Dialogue.fspro
+  sourceBankPath: ../../Audio/DialogueAudio/Dialogue/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -402,7 +402,8 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
+  MasterBanks:
+  - Master
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264

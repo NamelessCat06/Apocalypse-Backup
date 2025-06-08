@@ -59,13 +59,13 @@ Are you sure you want to leave? #line:043359f
 
 title: ExitBasement
 ---
--> Leave the basement
+-> Leave the basement #line:063e4de 
     <<teleport "Player" "BasementLocation">>
--> Close off the basement (end of this part of the story)
+-> Close off the basement (end of this part of the story) #line:01b9a58 
     <<if $peopleObjective == "Help other people">>
-        <i>just imagine you board up the basement entrance and stay inside with the other people</i>
+        <i>just imagine you board up the basement entrance and stay inside with the other people</i> #line:0456b0e 
     <<else>>
-        <i>just imagine you board up the basement entrance and stay inside</i>
+        <i>just imagine you board up the basement entrance and stay inside</i> #line:0ce825b 
     <<endif>>
 ===
 
@@ -82,6 +82,7 @@ The boy doesn't respond #line:02c4e94
         You slap the boy. #line:068a9c1 
         He looks up at you in shock... #line:0996a29 
         Boy: WHAT IS WRONG WITH YOU?!? #line:0e6cebc 
+        <<walk_to "Boy" "LeaveLocation">>
     -> Help him #line:048874f 
         <<set $peopleObjective to "Help other people">>
         You sit down next to the boy. He keeps hyperventilating and staring at the floor. There are tears in his eyes. #line:086a13f 
@@ -149,7 +150,7 @@ Girl 1: We might not be able to see our family ever again! #line:0ef9ec0
 title: ImSorry
 tags: girls
 ---
-You: Oh I'm sorry, I didn't mean for it to come out that way... #line:0d90c5e 
+You: I'm- sorry, I didn't mean for it to come out that way... #line:0d90c5e 
 Girl 1: What do you want from us #line:02942bc 
     -> "Nothing" #line:0eda5b9 
         <<jump Nothing>>
@@ -161,7 +162,7 @@ title: Nothing
 tags: girls
 ---
 You: Nothing! #line:0939935 
-Girl 1: Just leave us alone then. #line:0279099 
+Girl 1: Just- leave us alone then. #line:0279099 
 ===
 
 title: HelpYou
@@ -178,10 +179,10 @@ tags: girls
 ---
 <<set $peopleObjective to "Help other people">>
 You: It's not safe to stay here #line:02a92bc 
-Girl 1: Where else are we supposed to go then? #line:0369a76 
+Girl 1: Where are we supposed to go then? #line:0369a76 
     -> "Seek help" #line:0638baf 
         You: You should probably seek help. Some people outside must know what to do. #line:07f9d0a 
-        Girl 1: Why would we listen to you? You've not exactly been kind to us. #line:0ff0de7 
+        Girl 1: Why would we listen to you? You've been very nice kind to us. #line:0ff0de7 
         You: I and no one in this place will be able to help you survive. #line:0c2a5ae 
         You: If you want to see your family again, you should probably find someone who can. Or do you not want to see them again? #line:0b630aa 
         Girl 1: ... #line:026c8aa 
@@ -190,7 +191,7 @@ Girl 1: Where else are we supposed to go then? #line:0369a76
         <<walk_to "Girl 2 (Jen)" "LeaveLocation">> 
     -> "Go to the basement" #line:0d2b8e7 
         You: It's safer in the basement. The walls should keep out most of the dangerous radiation. #line:0cea00f 
-        Girl 1: Why would we listen to you? You've not exactly been kind to us. #line:0bd0ff3 
+        Girl 1: Why would we listen to you? You've not been very nice to us. #line:0bd0ff3 
         You: If you stay here you will surely die of radiation poisoning! In the basement you might have a bit more chance of survival. #line:0fdc6c2 
         You: You might be able to see your family again once this is all over. Or do you not want to see them? #line:05bd925 
         Girl 1: ... #line:0f87748 
@@ -277,6 +278,6 @@ tags: man
             <<walk_to "UnconciousMan" "BasementLocation">>
 <<else>>
     Man: I can't get him out like this #line:0eb6dc1 
-    Man: Clear the rubble #line:0f83a8b 
+    Man: Help me clear the rubble #line:0f83a8b 
 <<endif>>
 ===
