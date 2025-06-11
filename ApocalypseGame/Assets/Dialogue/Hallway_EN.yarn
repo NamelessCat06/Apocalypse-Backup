@@ -33,4 +33,6 @@ The boy doesn't respond #line:02c4e94
                 The boy gives a nod #line:0d07b19 
                 Boy: <i>Thank you...</i> #line:0b83472 
                 <<walk_to "Boy" "BasementLocation">>
+                <<wait 10>>
+                <<set_enabled_in_unity "Boy" false>>
 ===
