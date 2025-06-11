@@ -1,4 +1,4 @@
-﻿title: TalkManEN
+﻿title: TalkMan
 tags: man
 ---
 <<declare $talkedMan = "false">>
@@ -7,6 +7,7 @@ tags: man
     They are covered in severe burns and their skin looks like its about to fall off. #line:00a5068 
     Man: Please help me, the building is about to collapse! #line:0bac5e0 
         -> Help him #line:0690a42
+            <<set $peopleObjective to "Help other people">>
             <<declare $rubbleCleared = 0>>
             <<set $talkedMan to "true">>
             <<set_enabled_in_unity "ProximityTrigger1" true>>
@@ -20,7 +21,7 @@ tags: man
 <<endif>>
 ===
 
-title: AfterHelpEN
+title: AfterHelp
 tags: man
 ---
 <<if $rubbleCleared == 3>>
@@ -38,8 +39,10 @@ tags: man
             Man: ... you're right. #line:0983b7d 
             He puts the burned man over his shoulders. #line:0b0754e 
             Man: Thank you for helping #line:0eb4c77 
-            <<walk_to "Man" "LeaveLocation">>
+            <<walk_to "Man" "LeaveLocation" 0 false>>
             <<walk_to "UnconciousMan" "LeaveLocation">>
+            <<set_enabled_in_unity "Man" false>>
+            <<set_enabled_in_unity "UnconciousMan" false>>
         -> "Take him inside" #line:06c2302 
             You: Take him do the school. #line:0ba964e 
             You: It's very close and it's safe there from the radiation and the fires. #line:0bdb8c0 
@@ -59,10 +62,11 @@ tags: man
             Man: It's better than nothing at least #line:06ff458 
             He puts the burned man over his shoulders. #line:0aa075d 
             Man: Thank you for helping #line:00ead83
-            <<walk_to "Man" "BasementLocation">>
-            <<walk_to "UnconciousMan" "BasementLocation">>
+            <<walk_to "Man" "BasementLocation" 0 false>>
+            //<<teleport "Man" "InBasement">>
+            <<walk_to "UnconciousMan" "BasementLocation" 0 false>>
 <<else>>
     Man: I can't get him out like this #line:0eb6dc1 
-    Man: Clear the rubble #line:0f83a8b 
+    Man: Help me clear the rubble #line:0f83a8b 
 <<endif>>
 ===

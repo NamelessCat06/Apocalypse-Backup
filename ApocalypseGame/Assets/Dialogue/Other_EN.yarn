@@ -1,9 +1,9 @@
-﻿title: StartEN
+﻿title: Start
 ---
 <<declare $windowJump = 0>>
 <<declare $mainObjective = "">>
 <<declare $subObjective = "">>
-<<declare $peopleSaved = 0>>
+<<declare $peopleObjective = "">>
 <<declare $task = "">>
 <i>Ow... My head...</i> #line:0ae1db1 
 <i>...</i> #line:07aabb9 
@@ -17,7 +17,7 @@
 <<set $subObjective to "Find Michael">>
 ===
 
-title: WindowJumpLowEN
+title: WindowJumpLow
 ---
 <<if $windowJump < 4>>
     <i>I probably shouldn't jump through this...</i> #line:0c18527 
@@ -34,22 +34,34 @@ title: WindowJumpLowEN
 <<endif>>
 ===
 
-title: WindowCutEN
+title: WindowCut
 ---
 OW- #line:0502d3e 
 You cut yourself on the glass #line:09799a9 
 ===
 
-title: WindowJumpHighEN
+title: WindowJumpHigh
 ---
 <i>I probably shouldn't jump through this...</i> #line:0a74251 
 <i>Won't get far with broken legs</i> #line:0ed70c2 
 ===
 
-title: LeaveBorderEN
+title: LeaveBorder
 ---
 Are you sure you want to leave? #line:043359f 
     -> Yes (end of this part of the story) #line:0420019 
         <i>just imagine you leave the school area and are able to walk around the town</i> #line:0c58f67 
     -> No #line:04f88fe 
+===
+
+title: ExitBasement
+---
+-> Leave the basement #line:063e4de 
+    <<teleport "Player" "BasementLocation">>
+-> Close off the basement (end of this part of the story) #line:01b9a58 
+    <<if $peopleObjective == "Help other people">>
+        <i>just imagine you board up the basement entrance and stay inside with the other people</i> #line:0456b0e 
+    <<else>>
+        <i>just imagine you board up the basement entrance and stay inside</i> #line:0ce825b 
+    <<endif>>
 ===
