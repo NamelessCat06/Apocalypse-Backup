@@ -5,12 +5,14 @@ You: Are you okay? #line:0930281
 The boy doesn't respond #line:02c4e94 
     -> Snap out of it #line:0cea63e 
         You: HEY, SNAP OUT OF IT #line:068b697 
+        <<set_enabled_in_unity "BoyCrying" false>>
         You slap the boy. #line:068a9c1 
         He looks up at you in shock... #line:0996a29 
         Boy: WHAT IS WRONG WITH YOU?!? #line:0e6cebc 
-        <<walk_to "Boy" "LeaveLocation" 0 false>>
+        <<walk_to "Boy" "LeaveLocation">>
     -> Help him #line:048874f 
         <<set $peopleObjective to "Help other people">>
+        <<set_enabled_in_unity "BoyCrying" false>>
         You sit down next to the boy. He keeps hyperventilating and staring at the floor. There are tears in his eyes. #line:086a13f 
         You: It is important for you to breathe, I can help you with that. #line:0f14fa4 
         You: Just do as I do #line:0831592 
@@ -25,10 +27,10 @@ The boy doesn't respond #line:02c4e94
                 You: You should probably seek help. Some people outside must know what to do. #line:00eaa9c 
                 The boy gives a nod #line:0fa349b 
                 Boy: <i>Thank you...</i> #line:0a6472c 
-                <<walk_to "Boy" "LeaveLocation" 0 false>>
+                <<walk_to "Boy" "LeaveLocation">>
             -> Send him to the basement #line:0f2a45f 
                 You: It's safer in the basement. The walls should keep out most of the dangerous radiation. #line:0142f6c 
                 The boy gives a nod #line:0d07b19 
                 Boy: <i>Thank you...</i> #line:0b83472 
-                <<walk_to "Boy" "BasementLocation" 0 false>>
+                <<walk_to "Boy" "BasementLocation">>
 ===

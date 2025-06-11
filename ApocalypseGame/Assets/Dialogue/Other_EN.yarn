@@ -5,6 +5,7 @@
 <<declare $subObjective = "">>
 <<declare $peopleObjective = "">>
 <<declare $task = "">>
+<<set_enabled_in_unity "GirlCrying" true>>
 <i>Ow... My head...</i> #line:0ae1db1 
 <i>...</i> #line:07aabb9 
 <i>... Did a bomb just explode?</i> #line:08df100 
