@@ -13,8 +13,8 @@ tags: man
             <<set_enabled_in_unity "ProximityTrigger1" true>>
             <<set_enabled_in_unity "ProximityTrigger2" true>>
             <<set_enabled_in_unity "ProximityTrigger3" true>>
+            <<set_enabled_in_unity "TaskBar" true>>
             <<set $task to "Clear the rubble">>
-            <<set_enabled_in_unity "Amount" true>>
         -> Leave him #line:04b620e
 <<else>>
     <<jump AfterHelp>>
@@ -25,8 +25,7 @@ title: AfterHelp
 tags: man
 ---
 <<if $rubbleCleared == 3>>
-    <<set $task to "">>
-    <<set_enabled_in_unity "Amount" false>>
+<<set_enabled_in_unity "TaskBar" false>>
     You wrap your arms around the unconscious persons chest and pull with your full bodyweight. #line:0ff146b 
     After a while you two finally get the person out of the burning building. #line:09f33b3 
     Man: We need to get him somewhere safe. #line:034521c 
