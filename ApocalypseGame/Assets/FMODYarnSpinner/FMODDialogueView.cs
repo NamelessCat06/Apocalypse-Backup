@@ -9,57 +9,87 @@ public class FMODDialogueView : DialogueViewBase
 {
     [SerializeField]
     private FMODLineProvider fmodLineProvider;
+
     private EventInstance instance;
+    private Coroutine currentWaitCoroutine;
+
+    // Track currently active line and its callback
+    private LocalizedLine activeLine;
+    private System.Action activeCallback;
 
     private void Start()
     {
         if (fmodLineProvider == null)
         {
-            fmodLineProvider = FindFirstObjectByType<FMODLineProvider>(); // ✅ New Unity-friendly method
+            fmodLineProvider = FindFirstObjectByType<FMODLineProvider>();
         }
+
         if (fmodLineProvider == null)
         {
-            Debug.LogError("❌ FMODLineProvider not found in the scene! Make sure it's added.");
+            Debug.LogError("❌ FMODLineProvider not found in the scene!");
         }
     }
 
     public override void RunLine(LocalizedLine dialogueLine, System.Action onDialogueLineFinished)
     {
-        if (fmodLineProvider == null)
-        {
-            Debug.LogError("❌ FMODLineProvider is null! Skipping audio.");
-            onDialogueLineFinished?.Invoke();
-            return;
-        }
+        Debug.Log($"▶️ FMOD RunLine called for: {dialogueLine.TextID}");
 
-        Debug.Log($"🔎 Yarn sent LineID: {dialogueLine.TextID}");
+        activeLine = dialogueLine;
+        activeCallback = onDialogueLineFinished;
 
-        // Stop the current event before playing a new one
+        // Stop previous audio if still playing
         if (instance.isValid())
         {
             instance.stop(STOP_MODE.ALLOWFADEOUT);
             instance.release();
         }
 
-        // Retrieve the correct FMOD event based on the selected language
+        if (currentWaitCoroutine != null)
+        {
+            StopCoroutine(currentWaitCoroutine);
+            currentWaitCoroutine = null;
+        }
+
+        // Play the correct FMOD event
         if (fmodLineProvider.TryGetFmodEvent(dialogueLine.TextID, out EventReference fmodEvent))
         {
             Debug.Log($"✅ Found FMOD event: {fmodEvent} for LineID: {dialogueLine.TextID}");
+
             instance = RuntimeManager.CreateInstance(fmodEvent);
+            RuntimeManager.AttachInstanceToGameObject(instance, transform, GetComponent<Rigidbody>());
             instance.start();
 
-            // Wait until FMOD event finishes before continuing Yarn dialogue
-            RuntimeManager.AttachInstanceToGameObject(instance, transform, GetComponent<Rigidbody>());
-            StartCoroutine(WaitForEventCompletion(onDialogueLineFinished));
+            Debug.Log("⏳ Waiting for FMOD to finish...");
+            currentWaitCoroutine = StartCoroutine(WaitForEventCompletion());
         }
         else
         {
             Debug.LogWarning($"⚠️ No FMOD event found for LineID: {dialogueLine.TextID}");
-            onDialogueLineFinished?.Invoke();
+            FinishLine();
         }
     }
 
-    private System.Collections.IEnumerator WaitForEventCompletion(System.Action onDialogueLineFinished)
+    public override void InterruptLine(LocalizedLine dialogueLine, System.Action onDialogueLineFinished)
+    {
+        Debug.Log("⏹️ FMOD InterruptLine called");
+
+        // Stop audio immediately
+        if (instance.isValid())
+        {
+            instance.stop(STOP_MODE.IMMEDIATE);
+            instance.release();
+        }
+
+        if (currentWaitCoroutine != null)
+        {
+            StopCoroutine(currentWaitCoroutine);
+            currentWaitCoroutine = null;
+        }
+
+        FinishLine(); // Cleanly finalize the dialogue line
+    }
+
+    private System.Collections.IEnumerator WaitForEventCompletion()
     {
         PLAYBACK_STATE playbackState;
         do
@@ -68,9 +98,26 @@ public class FMODDialogueView : DialogueViewBase
             instance.getPlaybackState(out playbackState);
         } while (playbackState != PLAYBACK_STATE.STOPPED);
 
-        instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        instance.release();
+        Debug.Log("✅ FMOD event finished");
+        //FinishLine();
+    }
 
-        onDialogueLineFinished?.Invoke();
+    private void FinishLine()
+    {
+        if (instance.isValid())
+        {
+            instance.stop(STOP_MODE.IMMEDIATE);
+            instance.release();
+        }
+
+        if (activeCallback != null)
+        {
+            Debug.Log("🎯 FMOD onDialogueLineFinished invoked");
+            activeCallback.Invoke();
+            activeCallback = null;
+        }
+
+        activeLine = null;
+        currentWaitCoroutine = null;
     }
 }

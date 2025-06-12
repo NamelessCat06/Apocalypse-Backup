@@ -59,6 +59,7 @@ Are you sure you want to leave? #line:043359f
 
 title: ExitBasement
 ---
+<b>What do you want to do?</b> #line:0157aaa 
 -> Leave the basement #line:063e4de 
     <<teleport "Player" "BasementLocation">>
 -> Close off the basement (end of this part of the story) #line:01b9a58 

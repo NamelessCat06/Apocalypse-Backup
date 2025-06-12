@@ -43,6 +43,8 @@ tags: man
             <<walk_to "UnconciousMan" "LeaveLocation">>
             <<set_enabled_in_unity "Man" false>>
             <<set_enabled_in_unity "UnconciousMan" false>>
+            <<set_enabled_in_unity "ProximityTriggerMan" false>>
+            <<set_enabled_in_unity "ProximityTriggerUnconcious" false>>
         -> "Take him inside" #line:06c2302 
             You: Take him do the school. #line:0ba964e 
             You: It's very close and it's safe there from the radiation and the fires. #line:0bdb8c0 
@@ -62,9 +64,14 @@ tags: man
             Man: It's better than nothing at least #line:06ff458 
             He puts the burned man over his shoulders. #line:0aa075d 
             Man: Thank you for helping #line:00ead83
-            <<walk_to "Man" "BasementLocation" 0 false>>
-            //<<teleport "Man" "InBasement">>
-            <<walk_to "UnconciousMan" "BasementLocation" 0 false>>
+            <<walk_to "Man" "BasementLocation2" 0 false>>
+            <<walk_to "UnconciousMan" "BasementLocation">>
+            <<set_enabled_in_unity "Man" false>>
+            <<set_enabled_in_unity "UnconciousMan" false>>
+            <<set_enabled_in_unity "ProximityTriggerMan" false>>
+            <<set_enabled_in_unity "ProximityTriggerUnconcious" false>>
+                <<set_enabled_in_unity "BasementMan" true>>
+                <<set_enabled_in_unity "BasementUnconciousMan" true>>
 <<else>>
     Man: I can't get him out like this #line:0eb6dc1 
     Man: Help me clear the rubble #line:0f83a8b 

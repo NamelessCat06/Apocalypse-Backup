@@ -7,6 +7,7 @@
 <<declare $task = "">>
 <<set_enabled_in_unity "GirlCrying" true>>
 <i>Ow... My head...</i> #line:0ae1db1 
+<<set_enabled_in_unity "Peep_Edited" false>>
 <i>...</i> #line:07aabb9 
 <i>... Did a bomb just explode?</i> #line:08df100 
 <i>How long was I out for?</i> #line:0c8e87f 
@@ -55,8 +56,14 @@ Are you sure you want to leave? #line:043359f
     -> No #line:04f88fe 
 ===
 
+title: EnterBasement
+---
+<<teleport "Player" "InBasement">>
+===
+
 title: ExitBasement
 ---
+<b>What do you want to do?</b> #line:0157aaa 
 -> Leave the basement #line:063e4de 
     <<teleport "Player" "BasementLocation">>
 -> Close off the basement (end of this part of the story) #line:01b9a58 
