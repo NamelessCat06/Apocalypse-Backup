@@ -81,6 +81,8 @@ title: ExitBasement
     <<else>>
         <i>just imagine you board up the basement entrance and stay inside</i> #line:0ce825b 
     <<endif>>
+    None of you will be able to leave until the rescue services come, or one of you breaks open the barrier. #line:022adc6 
+    The Arcweave story continues from this point onwards, with Michael showing up at some point. #line:0cac94f 
 ===
 
 //  -----

@@ -73,11 +73,14 @@ title: ExitBasement
 -> Leave the basement #line:063e4de 
     <<teleport "Player" "BasementLocation">>
 -> Close off the basement (end of this part of the story) #line:01b9a58 
+    <<set_enabled_in_unity "ProximityTriggerBasement" false>>
     <<if $peopleObjective == "Help other people">>
         <i>just imagine you board up the basement entrance and stay inside with the other people</i> #line:0456b0e 
     <<else>>
         <i>just imagine you board up the basement entrance and stay inside</i> #line:0ce825b 
     <<endif>>
+    <i>You won't be able to leave until the rescue services come, or until you break open the barrier.</i> #line:022adc6 
+    <i>The Arcweave story continues from this point onwards, with Michael showing up at some point.</i> #line:0cac94f 
 ===
 
 //  -----
@@ -134,5 +137,6 @@ title: MichaelClue
     <i>At least I have the key</i> #line:03d81af 
 <<else>>
     <i>I will need a key though...</i> #line:0019ba6 
+    <<set_enabled_in_unity "KeySparkle" true>>
 <<endif>>
 ===
