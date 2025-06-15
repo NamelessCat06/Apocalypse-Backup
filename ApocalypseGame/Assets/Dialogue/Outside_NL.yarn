@@ -2,6 +2,7 @@
 tags: man
 ---
 <<declare $talkedMan1 = "false">>
+<<declare $manBasement = "false">>
 <<if $talkedMan1 == "false">>
     De man heeft moeite een bewusteloos persoon uit het gebouw te trekken.
     Het persoon zit onder de brandwonden en hun huid lijkt er bijna af te vallen. 
@@ -53,6 +54,7 @@ tags: man
             Man: Het is tenminste beter dan niets...
             De man gooit het persoon over zijn schouder.
             Man: Bedankt voor je hulp.
+            <<set $manBasement to "true">>
 <<else>>
     Man: Ik kan hem er zo niet uit krijgen
     Man: Verwijder het puin

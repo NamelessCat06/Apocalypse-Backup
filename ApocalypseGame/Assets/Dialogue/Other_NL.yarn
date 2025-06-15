@@ -57,3 +57,82 @@ Weet je zeker dat je weg wilt?
         <i>beeld je in dat je het school deel verlaat en door de stad kan lopen</i>
     -> Nee
 ===
+
+title: EnterBasement
+---
+<<if has_item("Player", "Key")>>
+    <<teleport "Player" "InBasement">>
+<<else>>
+    <i>De deur zit op slot...</i> #line:085a67d 
+<<endif>>
+===
+
+title: ExitBasement
+---
+<b><u>What do you want to do?</b></u> #line:0157aaa 
+-> Leave the basement #line:063e4de 
+    <<teleport "Player" "BasementLocation">>
+-> Close off the basement (end of this part of the story) #line:01b9a58 
+    <<if $peopleObjective == "Help other people">>
+        <i>just imagine you board up the basement entrance and stay inside with the other people</i> #line:0456b0e 
+    <<else>>
+        <i>just imagine you board up the basement entrance and stay inside</i> #line:0ce825b 
+    <<endif>>
+===
+
+//  -----
+//  Items
+//  -----
+title: Bag
+---
+<i>Dit is Michaels tas...</i> #line:0d98fd6 
+<i>Hij is hier geweest</i> #line:0988279 
+
+<<if $itemCollected == 3>>
+    <<jump MichaelClue>>
+<<endif>>
+===
+
+title: Shoe
+---
+<i>Michaels schoen...</i> #line:0bb19cf 
+<i>... Hoe heeft hij niet door dat hij hem kwijt is?</i> #line:05d7eec 
+
+<<if $itemCollected == 3>>
+    <<jump MichaelClue>>
+<<endif>>
+===
+
+title: Book
+---
+<i>Waarom is er een boek hier?</i> #line:0947133 
+Je opent het #line:0fbedea 
+<i>...</i> #line:0d9dd28 
+<i>Het is van Michael!</i> #line:0883808 
+
+<<if $itemCollected == 3>>
+    <<jump MichaelClue>>
+<<endif>>
+===
+
+title: Key
+---
+<<if $itemCollected == 3>>
+    <i>Ik heb de sleutel gevonden!</i> #line:0a8621f 
+    <i>Nu kan ik de kelder openen</i> #line:07fe572 
+<<else>>
+    <i>Het is een sleutel...</i> #line:088921b 
+    <i>Waarvoor is het?</i> #line:07b5745 
+<<endif>>
+===
+
+title: MichaelClue
+---
+<i>Ik ben overal geweest, waar is hij??</i> #line:0a5aba5 
+<i>Is hij misschien in de kelder?</i> #line:00a9ef5 
+<<if has_item("Player", "Key")>>
+    <i>Ik heb tenminste de sleutel</i> #line:03d81af 
+<<else>>
+    <i>Ik heb alleen een sleutel nodig...</i> #line:0019ba6 
+<<endif>>
+===

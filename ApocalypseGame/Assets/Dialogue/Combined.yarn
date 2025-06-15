@@ -8,7 +8,10 @@ title: Start
 <<declare $subObjective = "">>
 <<declare $peopleObjective = "">>
 <<declare $task = "">>
+<<declare $itemCollected = 0>>
+<<set_enabled_in_unity "GirlCrying" true>>
 <i>Ow... My head...</i> #line:0ae1db1 
+<<set_enabled_in_unity "Peep_Edited" false>>
 <i>...</i> #line:07aabb9 
 <i>... Did a bomb just explode?</i> #line:08df100 
 <i>How long was I out for?</i> #line:0c8e87f 
@@ -16,6 +19,7 @@ title: Start
 <i>...</i> #line:0f57c65 
 <i>Where is Michael?</i> #line:018f1cd 
 <i>He was just here</i> #line:0855f00 
+<<set_enabled_in_unity "ObjectiveBox" true>>
 <<set $mainObjective to "SURVIVE">>
 <<set $subObjective to "Find Michael">>
 ===
@@ -27,7 +31,7 @@ title: WindowJumpLow
     <i>The glass could cut me...</i> #line:06286b2 
     <<set $windowJump to $windowJump+1>>
 <<elseif $windowJump == 4>>
-    <b>Do you really want to jump through a window that badly?</b> #line:04cbc40 
+    <b><u>Do you really want to jump through a window that badly?</u></b> #line:04cbc40 
         -> Yes #line:042a1ac 
             <b>Fine, have it your way</b> #line:0f68603 
             <<set_enabled_in_unity "DownBorders" false>>
@@ -51,15 +55,24 @@ title: WindowJumpHigh
 
 title: LeaveBorder
 ---
-Are you sure you want to leave? #line:043359f 
+<b><u>Are you sure you want to leave?</u></b> #line:043359f 
     -> Yes (end of this part of the story) #line:0420019 
         <i>just imagine you leave the school area and are able to walk around the town</i> #line:0c58f67 
     -> No #line:04f88fe 
 ===
 
+title: EnterBasement
+---
+<<if has_item("Player", "Key")>>
+    <<teleport "Player" "InBasement">>
+<<else>>
+    <i>The door is locked...</i> #line:085a67d 
+<<endif>>
+===
+
 title: ExitBasement
 ---
-<b>What do you want to do?</b> #line:0157aaa 
+<b><u>What do you want to do?</b></u> #line:0157aaa 
 -> Leave the basement #line:063e4de 
     <<teleport "Player" "BasementLocation">>
 -> Close off the basement (end of this part of the story) #line:01b9a58 
@@ -119,6 +132,7 @@ Girl 1: It's fine... just a big shock, that's all. #line:058bbbc
     -> Talk to the other girl #line:0db17ba 
         You: Did you get hurt? #line:060b8bd 
         The sobbing girl shakes her head. #line:0c8f156 
+        <<set_enabled_in_unity "GirlCrying" false>>
         Girl 2: I-It is j-j-just a small cut from the glass. Nothing b-bad... #line:0c43264 
         You: Ah... #line:0cbbba2 
             -> "Why are you crying then?" #line:0dd198a 
@@ -138,6 +152,7 @@ title: WhyCrying
 tags: girls
 ---
 You: Why are you crying then? #line:01601af 
+<<set_enabled_in_unity "GirlCrying" false>>
 The crying girl looks up at you, confused. Her eyes are red. #line:0e7a5eb 
 The other girl stares at you dumbfounded. #line:0966b8f 
 Girl 1: ... because a bomb just exploded?!? In what world is that not a good reason to cry?! #line:0c69403 
@@ -188,8 +203,13 @@ Girl 1: Where are we supposed to go then? #line:0369a76
         You: If you want to see your family again, you should probably find someone who can. Or do you not want to see them again? #line:0b630aa 
         Girl 1: ... #line:026c8aa 
         Girl 1:... We'll go find help then.... Come on Jen. #line:03140fd 
+        <<set_enabled_in_unity "GirlCrying" false>>
         <<walk_to "Girl 1" "LeaveLocation" 0 false>>
-        <<walk_to "Girl 2 (Jen)" "LeaveLocation">> 
+        <<walk_to "Girl 2 (Jen)" "LeaveLocation2">> 
+        <<set_enabled_in_unity "Girl 1" false>>
+        <<set_enabled_in_unity "Girl 2 (Jen)" false>>
+        <<set_enabled_in_unity "ProximityTriggerGirl1" false>>
+        <<set_enabled_in_unity "ProximityTriggerGirl2" false>>
     -> "Go to the basement" #line:0d2b8e7 
         You: It's safer in the basement. The walls should keep out most of the dangerous radiation. #line:0cea00f 
         Girl 1: Why would we listen to you? You've not been very nice to us. #line:0bd0ff3 
@@ -197,8 +217,15 @@ Girl 1: Where are we supposed to go then? #line:0369a76
         You: You might be able to see your family again once this is all over. Or do you not want to see them? #line:05bd925 
         Girl 1: ... #line:0f87748 
         Girl 1: We'll go to the basement then... Come on Jen. #line:06fde65 
-        <<walk_to "Girl 1" "BasementLocation" 0 false>>
-        <<walk_to "Girl 2 (Jen)" "BasementLocation">>
+        <<set_enabled_in_unity "GirlCrying" false>>
+        <<walk_to "Girl 2 (Jen)" "BasementLocation2" 0 false>>
+        <<walk_to "Girl 1" "BasementLocation">>
+        <<set_enabled_in_unity "Girl 1" false>>
+        <<set_enabled_in_unity "Girl 2 (Jen)" false>>
+        <<set_enabled_in_unity "ProximityTriggerGirl1" false>>
+        <<set_enabled_in_unity "ProximityTriggerGirl2" false>>
+            <<set_enabled_in_unity "BasementGirl 1" true>>
+            <<set_enabled_in_unity "BasementGirl 2 (Jen)" true>>
 ===
 
 title: GrabFood
@@ -225,8 +252,8 @@ tags: man
             <<set_enabled_in_unity "ProximityTrigger1" true>>
             <<set_enabled_in_unity "ProximityTrigger2" true>>
             <<set_enabled_in_unity "ProximityTrigger3" true>>
+            <<set_enabled_in_unity "TaskBar" true>>
             <<set $task to "Clear the rubble">>
-            <<set_enabled_in_unity "Amount" true>>
         -> Leave him #line:04b620e
 <<else>>
     <<jump AfterHelp>>
@@ -237,8 +264,7 @@ title: AfterHelp
 tags: man
 ---
 <<if $rubbleCleared == 3>>
-    <<set $task to "">>
-    <<set_enabled_in_unity "Amount" false>>
+<<set_enabled_in_unity "TaskBar" false>>
     You wrap your arms around the unconscious persons chest and pull with your full bodyweight. #line:0ff146b 
     After a while you two finally get the person out of the burning building. #line:09f33b3 
     Man: We need to get him somewhere safe. #line:034521c 
@@ -252,9 +278,11 @@ tags: man
             He puts the burned man over his shoulders. #line:0b0754e 
             Man: Thank you for helping #line:0eb4c77 
             <<walk_to "Man" "LeaveLocation" 0 false>>
-            <<walk_to "UnconciousMan" "LeaveLocation">>
+            <<walk_to "UnconciousMan" "LeaveLocation2">>
             <<set_enabled_in_unity "Man" false>>
             <<set_enabled_in_unity "UnconciousMan" false>>
+            <<set_enabled_in_unity "ProximityTriggerMan" false>>
+            <<set_enabled_in_unity "ProximityTriggerUnconcious" false>>
         -> "Take him inside" #line:06c2302 
             You: Take him do the school. #line:0ba964e 
             You: It's very close and it's safe there from the radiation and the fires. #line:0bdb8c0 
@@ -274,11 +302,144 @@ tags: man
             Man: It's better than nothing at least #line:06ff458 
             He puts the burned man over his shoulders. #line:0aa075d 
             Man: Thank you for helping #line:00ead83
-            <<walk_to "Man" "BasementLocation" 0 false>>
-            //<<teleport "Man" "InBasement">>
+            <<walk_to "Man" "BasementLocation2" 0 false>>
             <<walk_to "UnconciousMan" "BasementLocation">>
+            <<set_enabled_in_unity "Man" false>>
+            <<set_enabled_in_unity "UnconciousMan" false>>
+            <<set_enabled_in_unity "ProximityTriggerMan" false>>
+            <<set_enabled_in_unity "ProximityTriggerUnconcious" false>>
+                <<set_enabled_in_unity "BasementMan" true>>
+                <<set_enabled_in_unity "BasementUnconciousMan" true>>
+            <<set $manBasement to "true">>
 <<else>>
     Man: I can't get him out like this #line:0eb6dc1 
     Man: Help me clear the rubble #line:0f83a8b 
+<<endif>>
+===
+
+//  -----
+//  Items
+//  -----
+title: Bag
+---
+<i>This is Michaels bag...</i> #line:0d98fd6 
+<i>He has been here</i> #line:0988279 
+
+<<if $itemCollected == 3>>
+    <<jump MichaelClue>>
+<<endif>>
+===
+
+title: Shoe
+---
+<i>Michaels shoe...</i> #line:0bb19cf 
+<i>... How did he not notice he lost it?</i> #line:05d7eec 
+
+<<if $itemCollected == 3>>
+    <<jump MichaelClue>>
+<<endif>>
+===
+
+title: Book
+---
+<i>Why is there a book here?</i> #line:0947133 
+You open it #line:0fbedea 
+<i>...</i> #line:0d9dd28 
+<i>It's Michael's!</i> #line:0883808 
+
+<<if $itemCollected == 3>>
+    <<jump MichaelClue>>
+<<endif>>
+===
+
+title: Key
+---
+<<if $itemCollected == 3>>
+    <i>I found the key!</i> #line:0a8621f 
+    <i>Now I can open the basement</i> #line:07fe572 
+<<else>>
+    <i>It's a key...</i> #line:088921b 
+    <i>What is it for?</i> #line:07b5745 
+<<endif>>
+===
+
+title: MichaelClue
+---
+<i>I've been everywhere, where is he??</i> #line:0a5aba5 
+<i>Maybe he's in the basement?</i> #line:00a9ef5 
+<<if has_item("Player", "Key")>>
+    <i>At least I have the key</i> #line:03d81af 
+<<else>>
+    <i>I will need a key though...</i> #line:0019ba6 
+<<endif>>
+===
+
+//  -----
+//  Basement
+//  -----
+title: TheBoy
+---
+You: How are you? #line:0da7a41 
+Boy: A bit better #line:063bfbe 
+<<if $manBasement == "true">>
+    Boy: I'm at least doing better than him #line:00d13c1 
+    Boy: He looks like he won't make it... #line:093c757 
+    <<if has_item("Player","Food")>>
+    Boy: ...and is extremely dehydrated- #line:0a9adc2 
+        -> Offer food and water #line:0e68e89 
+            Boy: Oh, that's very nice of you... #line:0f3a72f 
+            Boy: But do you have enough for yourself? #line:0cf66d9 
+            You: Just take it, he needs it more than me #line:005659a 
+            You give the boy the food and water you got from the cafeteria #line:018860e 
+            <<take_item "Player" "Food">>
+            He smiles at you #line:0876843 
+    <<endif>>
+<<endif>>
+Boy: ...Thank you again for helping me back there #line:0635381 
+You: It's no problem #line:03ac6bd 
+===
+
+title: TheMen
+---
+You: How is he doing? #line:0d1a452 
+Man: I don't know... #line:004a4ba 
+Man: I tried to bind his wounds as well as I could... #line:02270a7 
+Man: ... I don't think he'll make it #line:0643e0e 
+===
+
+title: TheGirls
+---
+<<declare $talkGirls = "false">>
+<<if $talkGirls == "false">>
+    You: How are you two? #line:003b3ad 
+    "Jen": It's... going... #line:0e1e86a 
+    Girl 1 just kind of looks at you and looks away #line:00ae2c7 
+    You: I see... #line:007a90e 
+    "Jen": How long do we have to stay here? #line:0c9683e 
+        -> "I don't know" #line:09138cb 
+            You: I don't know~ #line:03d69fc 
+            "Jen": Oh- #line:0f36bb9 
+            "Jen": b-but why did you send us here then? #line:072405d 
+            "Jen": WHAT IF THEY NEVER FIND US? #line:00316bf 
+            "Jen's" eye fill with tears #line:0b845de 
+            Girl 1 turns to "Jen" to comfort her again #line:053d372 
+        -> "For a looong time" #line:0214ae4 
+            You: For a looooong time #line:0a25f40 
+            Girl 1 looks at you in disbelieve #line:012b8b8 
+            Girl 1: How DARE you make JOKES RIGHT NOW? #line:00b6922 
+            Tears are welling up in "Jen's" eyes #line:09cce19 
+            Girl 1: LOOK AT WHAT YOU'VE DONE #line:058aa61 
+            Girl 1 turns to "Jen" to comfort her again #line:0be96cd 
+        -> "Until we get saved" #line:0e90f50 
+            You: Until we get saved #line:0d90231 
+            Girl 1: But... that could take... FOREVER #line:085bb59 
+            Girl 1: WHAT IF THEY NEVER FIND US? #line:0c8d754 
+            "Jen" looks like she's about to cry again #line:0542392 
+            Girl 1 looks panicked for a moment, then turns to comfort Jen #line:0c2c5eb 
+    <<set $talkGirls to "true">>
+<<else>>
+Girl 1 is comforting "Jen" again #line:089e7ed 
+She looks angry at you #line:05bcaf3 
+You should probably leave them alone #line:0ab8c67 
 <<endif>>
 ===

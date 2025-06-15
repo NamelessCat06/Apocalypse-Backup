@@ -1,0 +1,66 @@
+﻿title: TheJongenNL
+---
+Jij: Hoe gaat het? #line:0da7a41 
+Jongen: Iets beter #line:063bfbe 
+<<if $manBasement == "true">>
+    Jongen: Het gaat tenminste beter met mij dan met hem #line:00d13c1 
+    Jongen: Hij ziet eruit alsof hij het niet gaat overleven... #line:093c757 
+    <<if has_item("Player","Food")>>
+    Jongen: ...en extreem uitgedroogt is- #line:0a9adc2 
+        -> Bied eten en water aan #line:0e68e89 
+            Jongen: Oh, dat is erg aardig... #line:0f3a72f 
+            Jongen: Maar heb je genoeg voor jezelf? #line:0cf66d9 
+            Jij: Neem maar gewoon, hij heeft het meer nodig dan mij #line:005659a 
+            Je geeft de jongen het eten en drinken dat je uit te cafeteria had gepakt #line:018860e 
+            <<take_item "Player" "Food">>
+            Hij lacht naar je #line:0876843 
+    <<endif>>
+<<endif>>
+Jongen: ...Nog bedankt voor het helpen trouwens #line:0635381 
+Jij: Geen probleem #line:03ac6bd 
+===
+
+title: TheMenNL
+---
+Jij: Hoe gaat het met hem? #line:0d1a452 
+Man: Ik weet het net... #line:004a4ba 
+Man: Ik heb geprobeert zijn wonden zo goed mogelijk te verbinden... #line:02270a7 
+Man: ... Ik denk niet dat hij het gaat halen #line:0643e0e 
+===
+
+title: TheGirlsNL
+---
+<<declare $talkGirls = "false">>
+<<if $talkGirls == "false">>
+    Jij: Hoe gaat het met jullie? #line:003b3ad 
+    "Jen": Het... gaat... #line:0e1e86a 
+    Meisje 1 kijkt naar je en kijkt meteen weg #line:00ae2c7 
+    Jij: Ah... #line:007a90e 
+    "Jen": Hoe lang moeten we hier blijven? #line:0c9683e 
+        -> "Ik weet het niet" #line:09138cb 
+            Jij: Ik weet het niet~ #line:03d69fc 
+            "Jen": Oh- #line:0f36bb9 
+            "Jen": m-maar waarom stuurde je ons hier dan naartoe? #line:072405d 
+            "Jen": WAT ALS ZE ONS NOOIT VINDEN? #line:00316bf 
+            "Jen's" ogen worden waterig #line:0b845de 
+            Meisje 1 begint "Jen" weer te troosten #line:053d372 
+        -> "Voor een laaaange tijd" #line:0214ae4 
+            Jij: Voor een laaaange tijd #line:0a25f40 
+            Meisje 1 kijkt je verbaast aan #line:012b8b8 
+            Meisje 1: Hoe DURF je nu GRAPJES TE MAKEN? #line:00b6922 
+            Tranen vormen in "Jen's" ogen #line:09cce19 
+            Meisje 1: KIJK WAT JE HEBT GEDAAN #line:058aa61 
+            Meisje 1 draait zich naar "Jen" om haar te troosten #line:0be96cd 
+        -> "Tot we gered worden" #line:0e90f50 
+            Jij: Tot we gered worden #line:0d90231 
+            Meisje 1: Maar... dat kan... EEUWIG DUREN #line:085bb59 
+            Meisje 1: WAT ALS ZE ONS NOOIT VINDEN? #line:0c8d754 
+            "Jen" ziet eruit alsof ze weer gaat huilen #line:0542392 
+            Meisje 1 kijkt paniekerig en draait zich dan naar "Jen" toe om haar te troosten #line:0c2c5eb 
+    <<set $talkGirls to "true">>
+<<else>>
+Meisje 1 is "Jen" weer aan het troosten #line:089e7ed 
+Ze kijkt je boos aan #line:05bcaf3 
+Je moet ze waarschijnlijk alleen laten #line:0ab8c67 
+<<endif>>
+===

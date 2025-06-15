@@ -39,7 +39,7 @@ tags: man
             He puts the burned man over his shoulders. #line:0b0754e 
             Man: Thank you for helping #line:0eb4c77 
             <<walk_to "Man" "LeaveLocation" 0 false>>
-            <<walk_to "UnconciousMan" "LeaveLocation">>
+            <<walk_to "UnconciousMan" "LeaveLocation2">>
             <<set_enabled_in_unity "Man" false>>
             <<set_enabled_in_unity "UnconciousMan" false>>
             <<set_enabled_in_unity "ProximityTriggerMan" false>>
@@ -71,6 +71,7 @@ tags: man
             <<set_enabled_in_unity "ProximityTriggerUnconcious" false>>
                 <<set_enabled_in_unity "BasementMan" true>>
                 <<set_enabled_in_unity "BasementUnconciousMan" true>>
+            <<set $manBasement to "true">>
 <<else>>
     Man: I can't get him out like this #line:0eb6dc1 
     Man: Help me clear the rubble #line:0f83a8b 

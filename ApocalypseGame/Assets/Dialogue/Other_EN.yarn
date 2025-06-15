@@ -5,6 +5,7 @@
 <<declare $subObjective = "">>
 <<declare $peopleObjective = "">>
 <<declare $task = "">>
+<<declare $itemCollected = 0>>
 <<set_enabled_in_unity "GirlCrying" true>>
 <i>Ow... My head...</i> #line:0ae1db1 
 <<set_enabled_in_unity "Peep_Edited" false>>
@@ -59,7 +60,11 @@ title: LeaveBorder
 
 title: EnterBasement
 ---
-<<teleport "Player" "InBasement">>
+<<if has_item("Player", "Key")>>
+    <<teleport "Player" "InBasement">>
+<<else>>
+    <i>The door is locked...</i> #line:085a67d 
+<<endif>>
 ===
 
 title: ExitBasement
@@ -73,4 +78,61 @@ title: ExitBasement
     <<else>>
         <i>just imagine you board up the basement entrance and stay inside</i> #line:0ce825b 
     <<endif>>
+===
+
+//  -----
+//  Items
+//  -----
+title: Bag
+---
+<i>This is Michaels bag...</i> #line:0d98fd6 
+<i>He has been here</i> #line:0988279 
+
+<<if $itemCollected == 3>>
+    <<jump MichaelClue>>
+<<endif>>
+===
+
+title: Shoe
+---
+<i>Michaels shoe...</i> #line:0bb19cf 
+<i>... How did he not notice he lost it?</i> #line:05d7eec 
+
+<<if $itemCollected == 3>>
+    <<jump MichaelClue>>
+<<endif>>
+===
+
+title: Book
+---
+<i>Why is there a book here?</i> #line:0947133 
+You open it #line:0fbedea 
+<i>...</i> #line:0d9dd28 
+<i>It's Michael's!</i> #line:0883808 
+
+<<if $itemCollected == 3>>
+    <<jump MichaelClue>>
+<<endif>>
+===
+
+title: Key
+---
+<<if $itemCollected == 3>>
+    <i>I found the key!</i> #line:0a8621f 
+    <i>Now I can open the basement</i> #line:07fe572 
+<<else>>
+    <i>It's a key...</i> #line:088921b 
+    <i>What is it for?</i> #line:07b5745 
+<<endif>>
+===
+
+title: MichaelClue
+---
+<i>I've been everywhere, where is he??</i> #line:0a5aba5 
+<i>Maybe he's in the basement?</i> #line:00a9ef5 
+<<if has_item("Player", "Key")>>
+    <i>At least I have the key</i> #line:03d81af 
+<<else>>
+    <i>I will need a key though...</i> #line:0019ba6 
+<<endif>>
 ===
